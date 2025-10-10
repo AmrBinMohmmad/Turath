@@ -9,13 +9,18 @@
 
 </head>
 <body>
-   <nav>
-        <a href="main.htm">Home</a>
-        <a href="index.html">Sign up</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        
+   <header class="navbar">
+    <div class="logo">
+      <img src="Favicon.png" alt="Logo">
+      <h1>Data Annotation</h1>
+    </div>
+    <nav class="links">
+      <a href="main.htm">Home</a>
+      <a href="index.html">Sign up</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
+  </header>
     <div class="container">
         <div class="form_box active" id="login-form">
             <form action="">
@@ -23,7 +28,7 @@
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="password" placeholder="password" required>
                 <button type="submit" name="Login" >Login</button>
-                <p>Don't have an account? <a href="#" onclick="showForm('register-form')">Register</a></p>
+                <p>Don't have an account? <a onclick="showForm('register-form')">Register</a></p>
             </form>
         </div>
 
@@ -39,11 +44,13 @@
                     <option value="admin">Admin</option>
                 </select>
                 <button type="submit" name="register">Register</button>
-                <p>Already have an account? <a href="#" onclick="showForm('login-form')">Login</a></p>
+                <p>Already have an account? <a onclick="showForm('login-form')">Login</a></p>
             </form>
         </div>
     </div>
-
+  <footer>
+    <p>© 2025 Data Annotation</p>
+  </footer>
     <script src="script.js"></script>
 </body>
 </html>
