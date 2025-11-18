@@ -31,7 +31,7 @@ function isActiveForm($formName, $activeForm){
   <header class="navbar">
   <a href="index.html" class="logo">
     <img src="Favicon.png" alt="Logo">
-    <h1>Data Annotation</h1>
+     <h1>Data Annotation</h1>
     </div>
     <nav>
       <a href="index.html">Home</a>
