@@ -1,104 +1,57 @@
 <?php
+
 session_start();
+
 require_once 'config.php';
 
-function redirectWithError($type, $message, $activeForm){
-    $_SESSION[$type . '_error'] = $message;
-    $_SESSION['active_form']    = $activeForm;
-    header('Location: signup.php');
-    exit;
-}
+
 
 if (isset($_POST['register'])) {
+    $name=$_POST['name'];
+     $email=$_POST['email'];
+      $password=password_hash( $_POST['password'],PASSWORD_DEFAULT);
+       $role=$_POST['role'];
+    
+       $checkEmail=$conn->query("SELECT email FROM users WHERE email = '$email'");
 
-    $name     = trim($_POST['name'] ?? '');
-    $email    = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
-    $role     = $_POST['role'] ?? '';
+       if ($checkEmail->num_rows>0) {
+        $_SESSION['register_error']="Email is already registered!";
+        $_SESSION['active_form']="register";
 
-    if ($name === '' || $email === '' || $password === '' || $role === '') {
-        redirectWithError('register', 'Please fill in all fields.', 'register');
-    }
+       }else {
+        $conn->query("INSERT INTO users (name,email,password,role) VALUES ('$name','$email','$password','$role')");
 
-    // check email exists
-    $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->store_result();
+       }
+    header("Location:index.php");
+    exit();   
+}
 
-    if ($stmt->num_rows > 0) {
-        $stmt->close();
-        redirectWithError('register', 'Email is already registered.', 'register');
-    }
-    $stmt->close();
 
-    $hash = password_hash($password, PASSWORD_DEFAULT);
+if (isset($_POST['login'])) {
+    $email=$_POST['email'];
+    $password=$_POST['password'];
 
-    $stmt = $conn->prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $name, $email, $hash, $role);
+    $result=$conn->query("SELECT * FROM users WHERE email = '$email'");
 
-    if ($stmt->execute()) {
-        $_SESSION['user'] = [
-            'id'    => $stmt->insert_id,
-            'name'  => $name,
-            'email' => $email,
-            'role'  => $role
-        ];
-        $stmt->close();
+    if ($result->num_rows>0) {
+        $user=$result->fetch_assoc();
+        if (password_verify($password,$user['password'])) {
+            $_SESSION['name']=$user['name'];
+            $_SESSION['email']=$user['email'];
 
-        if ($role === 'admin') {
-            header('Location: admin_page.php');
-        } else {
-            header('Location: user_page.php');
-        }
-        exit;
-    } else {
-        $stmt->close();
-        redirectWithError('register', 'Registration failed. Try again.', 'register');
-    }
-
-} elseif (isset($_POST['login'])) {
-
-    $email    = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
-
-    if ($email === '' || $password === '') {
-        redirectWithError('login', 'Please enter email and password.', 'login');
-    }
-
-    $stmt = $conn->prepare("SELECT id, name, email, password, role FROM users WHERE email = ?");
-    $stmt->bind_param("s",$email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($row = $result->fetch_assoc()) {
-        if (password_verify($password, $row['password'])) {
-
-            $_SESSION['user'] = [
-                'id'    => $row['id'],
-                'name'  => $row['name'],
-                'email' => $row['email'],
-                'role'  => $row['role']
-            ];
-
-            $stmt->close();
-
-            if ($row['role'] === 'admin') {
-                header('Location: admin_page.php');
-            } else {
-                header('Location: user_page.php');
+            if ($user['role']==='admin') {
+                header("Location: admin_page.php");
+            }else{
+                header("Location:user_page.php");
             }
-            exit;
-        } else {
-            $stmt->close();
-            redirectWithError('login', 'Wrong password.', 'login');
+            exit();
+
         }
-    } else {
-        $stmt->close();
-        redirectWithError('login', 'Account not found.', 'login');
     }
 
-} else {
-    header('Location: signup.php');
-    exit;
+    $_SESSION['login_error']="incorrect email or password";
+    $_SESSION['active_form']="login";
+    header("Location: index.php");
+    exit();
+
 }
