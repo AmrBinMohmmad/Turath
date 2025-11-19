@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+</head>
+
+<body>
+    <label>Create Card</label>
+    <form action="create_card_admin_site.php" method="post">
+        <label for="number_of_users">Enter how many user may enter this card</label>
+        <input type="number" id="number_of_users" name="number_of_users" min="1" max="30">
+        <br>
+        <br>
+        <label for="number_of_question">how many questions you want for this card</label>
+        <input type="number" name="number_of_question" id="number_of_question" min="5" max="1000">
+        <br>
+        <br>
+        <label for="card_name">card name</label>
+        <input type="text" name="card_name" id="card_name" required>
+        <br>
+        <br>
+        <input type="submit" name="create_card" id="create_card">
+    </form>
+</body>
+
+</html>
