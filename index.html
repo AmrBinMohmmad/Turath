@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>questions</title>
-    
+
 </head>
+
 <body>
     <div class="card">
         <label for="project_card">Project One</label>
-        <p >Type of question is western</p>
-        <form action="first.php" method="post" id="project_card" name="">
+        <p>Type of question is western</p>
+        <form action="show_question_from_db.php" method="post" id="project_card" name="">
             <input type="submit" value="Go" name="bt1" id="bt1">
             <input type="hidden" value="Western" name="type">
+            <a href="admin_page.html">Go to Admin page</a>
+
         </form>
     </div>
 </body>
+
 </html>
