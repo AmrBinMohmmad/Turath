@@ -445,4 +445,79 @@ footer {
   margin-bottom: 20px;
 }
 
+/*admin panel style*/
+
+.admin-content {
+  margin: 20px;
+}
+.admin-content lable {
+  margin-bottom: 15px;
+  display:block;
+
+}
+.admin-content input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.5);
+  display: flex;
+  align-items: center;
+}
+.admin-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.admin-container {
+  background: white;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e3e8ff; 
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  height: 100%;
+}
+.admin-container input,
+.admin-container select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.admin-container button {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.admin-container button:hover {
+  background: #1e60d3;
+}
+.hidden {
+  display: none;
+}
+.create-button {
+  background: #3b82f6;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin:0 ;
+  font-size: 16px;
+ 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.create-button:hover {
+  background: #1e60d3;
+}
 
