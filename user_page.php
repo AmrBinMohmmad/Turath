@@ -1,11 +1,11 @@
-<?php
-session_start();
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'user') {
-    header('Location: signup.php');
-    exit;
-}
-$user = $_SESSION['user'];
-?>
+// <?php
+// session_start();
+// if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'user') {
+//     header('Location: signup.php');
+//     exit;
+// }
+// $user = $_SESSION['user'];
+// ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,3 +41,4 @@ $user = $_SESSION['user'];
   </footer>
 </body>
 </html>
+
