@@ -42,7 +42,7 @@ if (isset($_POST['login'])) {
             if ($user['role']==='admin') {
                 header("Location: admin_page.php");
             }else{
-                header("Location:user_page.php");
+                header("Location:types.html");
             }
             exit();
 
@@ -56,4 +56,5 @@ if (isset($_POST['login'])) {
 
 
 }
+
 
