@@ -22,7 +22,7 @@ if (isset($_POST['register'])) {
         $conn->query("INSERT INTO users (name,email,password,role) VALUES ('$name','$email','$password','$role')");
 
        }
-    header("Location:index.php");
+    header("Location:index.html");
     exit();   
 }
 
@@ -53,5 +53,6 @@ if (isset($_POST['login'])) {
     $_SESSION['active_form']="login";
     header("Location: index.php");
     exit();
+
 
 }
