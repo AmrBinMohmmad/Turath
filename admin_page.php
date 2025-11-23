@@ -1,11 +1,11 @@
-<?php
-session_start();
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
-    header('Location: signup.php');
-    exit;
-}
-$admin = $_SESSION['user'];
-?>
+// <?php
+// session_start();
+// if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
+//     header('Location: signup.php');
+//     exit;
+// }
+// $admin = $_SESSION['user'];
+// ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,3 +40,4 @@ $admin = $_SESSION['user'];
   </footer>
 </body>
 </html>
+
