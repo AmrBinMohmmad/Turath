@@ -17,7 +17,7 @@ if(!$project) die("Project not found");
 // ---------------------------------------------------------------------------
 $sql_users = "SELECT DISTINCT u.id, u.name 
               FROM annotations a 
-              JOIN if0_40458841_users_db.users u ON u.id = a.user_id 
+              JOIN if0_40419506_users_db.users u ON u.id = a.user_id 
               WHERE a.project_id = $project_id 
               ORDER BY u.id ASC";
 
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_scores'])) {
                         NULLIF(w.True_False_question, '')
                     ) as question_data 
                     FROM annotations a 
-                    JOIN if0_40458841_questions_db.words_db w ON w.id=a.question_id 
+                    JOIN if0_40419506_questions_db.words_db w ON w.id=a.question_id 
                     WHERE a.project_id=$project_id AND a.user_id={$u['id']} 
                     ORDER BY a.id ASC";
             
