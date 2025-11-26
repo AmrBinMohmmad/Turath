@@ -64,7 +64,7 @@ $projects = $conn->query("SELECT DISTINCT p.id, p.card_name
                 NULLIF(w.True_False_question, '')
             ) as question_data 
             FROM annotations a 
-            JOIN if0_40458841_questions_db.words_db w ON w.id=a.question_id 
+            JOIN if0_40419506_questions_db.words_db w ON w.id=a.question_id 
             WHERE a.project_id={$p['id']} AND a.user_id=$user_id 
             ORDER BY a.id ASC";
 
