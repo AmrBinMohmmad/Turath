@@ -12,13 +12,13 @@ error_reporting(E_ALL);
 
 
 
-$host = "sql206.infinityfree.com";
+$host = "sql204.infinityfree.com";
 
-$user = "if0_40458841";
+$user = "if0_40419506";
 
-$password = "PoweR135";
+$password = "Abmw123456789";
 
-$database = "if0_40458841_projects";
+$database = "if0_40419506_projects";
 
 
 
@@ -46,7 +46,7 @@ $conn->query("SET CHARACTER SET utf8mb4");
 
 // 2. اتصال قاعدة بيانات الأسئلة
 
-$conn_qs = new mysqli($host, $user, $password, "if0_40458841_questions_db");
+$conn_qs = new mysqli($host, $user, $password, "if0_40419506_questions_db");
 
 if ($conn_qs->connect_error) {
 
