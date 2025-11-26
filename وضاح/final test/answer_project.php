@@ -18,7 +18,7 @@ $sql = "SELECT cq.id as link_id, w.id as real_q_id,
             NULLIF(w.True_False_question, '')
         ) as question_data 
         FROM cards_questions cq 
-        JOIN if0_40458841_questions_db.words_db w ON w.id = cq.question_id 
+        JOIN if0_40419506_questions_db.words_db w ON w.id = cq.question_id 
         WHERE cq.card_id=$project_id 
         ORDER BY cq.id ASC";
 
