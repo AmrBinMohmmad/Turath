@@ -42,6 +42,7 @@ $conn->query("SET NAMES 'utf8mb4'");
 
 $conn->query("SET CHARACTER SET utf8mb4");
 
+$conn->query("SET SESSION collation_connection = 'utf8mb4_unicode_ci'");
 
 
 // 2. اتصال قاعدة بيانات الأسئلة
@@ -62,7 +63,7 @@ $conn_qs->query("SET NAMES 'utf8mb4'");
 
 $conn_qs->query("SET CHARACTER SET utf8mb4");
 
-
+$conn_qs->query("SET SESSION collation_connection = 'utf8mb4_unicode_ci'");
 
 
 
