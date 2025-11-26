@@ -7,9 +7,9 @@ error_reporting(E_ALL);
 require "config2.php";
 session_start();
 
-// المستخدم (من السيشن، أو افتراضي للتجربة)
+// المستخدم الحالي
 $user_id   = $_SESSION['user_id'] ?? 1;
-$user_name = $_SESSION['name']    ?? 'ضيف';
+$user_name = $_SESSION['name']    ?? 'مستخدم';
 
 // جلب البطاقات (المشاريع)
 $projects = $conn->query("
@@ -30,6 +30,7 @@ $projects = $conn->query("
 </head>
 <body>
 
+  <!-- نفس هيدر الموقع -->
   <header class="navbar">
     <a href="index.html" class="logo" style="text-decoration: none;">
       <img src="Favicon.png" alt="شعار لهجتنا">
@@ -43,74 +44,95 @@ $projects = $conn->query("
       <a href="signup.php">تسجيل / دخول</a>
       <a href="about.html">عن الموقع</a>
       <a href="contact.html">تواصل معنا</a>
-      <span style="margin-right:1rem;">مرحباً، <?= htmlspecialchars($user_name) ?></span>
+      <span class="nav-username">مرحباً، <?= htmlspecialchars($user_name) ?></span>
     </nav>
   </header>
 
-  <main class="hero">
-    <div class="hero-content">
-      <h2>لوحة المستخدم</h2>
-      <p>
-        هنا تقدر تشوف البطاقات المتاحة، وتبدأ أو تكمّل إجاباتك على أسئلة لهجات 
-        وتراث مناطق المملكة.
-      </p>
+  <main class="user-main">
+
+    <!-- الشريط العلوي الأخضر مثل الصورة -->
+    <div class="user-topbar">
+      <div class="user-topbar-left">
+        <span class="user-icon">⇦</span>
+        <span>إجاباتك: <strong>عرض الإحصائيات</strong></span>
+      </div>
+      <div class="user-topbar-right">
+        <span>منصة <strong>لهجتنا</strong></span>
+      </div>
     </div>
+
+    <!-- العنوان والوصف -->
+    <section class="user-intro">
+      <h2>اختر فئة للبدء</h2>
+      <p>
+        البيانات مقسّمة حسب نوع البطاقة. اختر بطاقة للدخول إلى أسئلة اللهجات 
+        والثقافة الخاصة بكل مجموعة.
+      </p>
+    </section>
+
+    <!-- كروت البطاقات بنفس فكرة التصميم الأخضر -->
+    <section class="cards-grid">
+
+      <?php if ($projects && $projects->num_rows > 0): ?>
+        <?php while ($p = $projects->fetch_assoc()): ?>
+
+          <?php
+            $total_q = (int)$p['number_of_question'];
+
+            // عدد الأسئلة التي أجاب عليها هذا المستخدم في هذه البطاقة
+            $answered = 0;
+            $answered_query = $conn->query("
+              SELECT COUNT(*) AS c 
+              FROM annotations 
+              WHERE user_id = {$user_id} 
+                AND project_id = {$p['id']}
+            ");
+            if ($answered_query) {
+                $answered = (int)$answered_query->fetch_assoc()['c'];
+            }
+
+            $progress = ($total_q > 0) ? round(($answered / $total_q) * 100) : 0;
+          ?>
+
+          <article class="category-card">
+            <div class="category-card-header">
+              <div class="card-icon-circle">
+                <span class="card-icon">🗂</span>
+              </div>
+              <div class="card-title-block">
+                <h3><?= htmlspecialchars($p['card_name']) ?></h3>
+                <p class="card-subtitle">
+                  تتضمّن أسئلة ثقافية ولهجية من هذه الفئة.
+                </p>
+              </div>
+            </div>
+
+            <div class="card-meta">
+              <span>عدد الأسئلة في البطاقة: <?= $total_q ?></span>
+              <span>عدد المشاركين: <?= (int)$p['completed_users'] ?> / <?= (int)$p['number_of_users'] ?></span>
+            </div>
+
+            <div class="card-footer">
+              <div class="card-count-pill">
+                <?= $answered ?> / <?= $total_q ?>
+              </div>
+              <div class="card-footer-label">
+                المهام المكتملة
+              </div>
+              <a class="card-main-button" href="answer_project.php?id=<?= (int)$p['id'] ?>">
+                <?= ($progress > 0 && $progress < 100) ? 'متابعة' : 'ابدأ الآن' ?>
+              </a>
+            </div>
+          </article>
+
+        <?php endwhile; ?>
+      <?php else: ?>
+        <p>لا توجد بطاقات متاحة حالياً.</p>
+      <?php endif; ?>
+
+    </section>
+
   </main>
-
-  <section class="features">
-    <h3>البطاقات المتاحة</h3>
-
-    <?php if ($projects && $projects->num_rows > 0): ?>
-      <?php while ($p = $projects->fetch_assoc()): ?>
-
-        <?php
-          // عدد الأسئلة في البطاقة
-          $total_q = (int)$p['number_of_question'];
-
-          // كم سؤال جاوب هذا المستخدم في هذه البطاقة
-          $answered = 0;
-          $answered_query = $conn->query("
-            SELECT COUNT(*) AS c 
-            FROM annotations 
-            WHERE user_id = {$user_id} 
-              AND project_id = {$p['id']}
-          ");
-          if ($answered_query) {
-              $answered = (int)$answered_query->fetch_assoc()['c'];
-          }
-
-          // نسبة التقدّم
-          $progress = ($total_q > 0) ? round(($answered / $total_q) * 100) : 0;
-        ?>
-
-        <div class="feature" style="border:1px solid #eee; border-radius:10px; margin-bottom:1rem;">
-          <h4 style="margin-top:0;"><?= htmlspecialchars($p['card_name']) ?></h4>
-          <p style="margin:0 0 0.5rem 0;">
-            عدد الأسئلة في هذه البطاقة: <?= $total_q ?><br>
-            عدد المشاركين: <?= (int)$p['completed_users'] ?> / <?= (int)$p['number_of_users'] ?>
-          </p>
-
-          <p class="small" style="margin:0 0 0.5rem 0;">
-            تقدّمك: <?= $progress ?>% (<?= $answered ?> / <?= $total_q ?> سؤال)
-          </p>
-
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: <?= $progress ?>%;"></div>
-          </div>
-
-          <div style="margin-top:0.8rem;">
-            <a class="btn" href="answer_project.php?id=<?= (int)$p['id'] ?>">
-              <?= ($progress > 0 && $progress < 100) ? 'متابعة' : 'ابدأ الآن' ?>
-            </a>
-          </div>
-        </div>
-
-      <?php endwhile; ?>
-    <?php else: ?>
-      <p>لا توجد بطاقات متاحة حالياً.</p>
-    <?php endif; ?>
-
-  </section>
   
   <footer>
     <p>© 2025 لهجتنا</p>
