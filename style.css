@@ -1218,5 +1218,83 @@ footer {
   font-size: 0.9rem;
   color: #1e293b;
 }
+/* صفحة المستخدم */
+.user-page {
+  padding: 2rem 5vw;
+  background: #e7edff;
+  min-height: 100vh;
+}
+
+.user-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.user-header h2 {
+  font-size: 2rem;
+  margin-bottom: .5rem;
+  color: #1e293b;
+}
+
+.user-header p {
+  color: #475569;
+  font-size: .95rem;
+}
+
+/* شبكة البطاقات */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* البطاقة */
+.card {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 1.2rem 1.5rem;
+  box-shadow: 0 3px 12px rgba(0,0,0,.08);
+  border-top: 5px solid #3b82f6;
+}
+
+/* عنوان البطاقة */
+.card-title {
+  font-weight: bold;
+  color: #1e293b;
+  font-size: 1.25rem;
+  margin-bottom: .6rem;
+}
+
+.card-info {
+  color: #475569;
+  font-size: .9rem;
+  line-height: 1.8;
+}
+
+/* زر */
+.card-btn {
+  display: inline-block;
+  margin-top: .6rem;
+  padding: .45rem 1.3rem;
+  background: #3b82f6;
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  font-size: .9rem;
+  transition: .2s;
+}
+
+.card-btn:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+.no-projects {
+  text-align: center;
+  color: #475569;
+  font-size: 1rem;
+}
+
 
 
