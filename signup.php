@@ -38,16 +38,19 @@ function isActiveForm($formName, $activeForm){
           
       </div>
     </a>
-   <nav>
+ <nav>
   <a href="index.html">الرئيسية</a>
 
-  <a href="signup.php?form=register">تسجيل</a>
-  /
-  <a href="signup.php?form=login">دخول</a>
+  <span class="auth-links">
+    <a href="signup.php?form=register">تسجيل</a>
+    <span class="divider">/</span>
+    <a href="signup.php?form=login">دخول</a>
+  </span>
 
   <a href="about.html">عن الموقع</a>
   <a href="contact.html">تواصل معنا</a>
 </nav>
+
 
   </header>
 
