@@ -128,9 +128,20 @@ nav {
   gap: 25px;         
 }
 
-/* نلغي المارجن القديم اللي كان يبوظ المسافات */
 nav a {
+
+  color: #1e3a8a;
+
+  text-decoration: none;
+
+  margin-left: 25px;
+
+  font-weight: 500;
+
+  transition: 0.3s;
+
   margin: 0 !important;
+
 }
 
 nav a:hover {
