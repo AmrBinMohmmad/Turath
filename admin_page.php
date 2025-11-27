@@ -21,7 +21,6 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
      <h1>Data Annotation - Admin</h1>
     </div>
     <nav>
-      <span><?= e($admin['name']) ?></span>
       <a href="create_project.php" class="button">Create Project</a>
       <a href="logout.php">Logout</a>
       <!---<a href="user_page.php">View User View</a>
