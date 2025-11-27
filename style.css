@@ -616,117 +616,54 @@ footer {
   padding: 60px 20px 40px;
 }
 
-.contact-hero {
-  text-align: center;
-  max-width: 650px;
-  margin-bottom: 30px;
-}
-
-.contact-hero h2 {
+/* العنوان والوصف فوق */
+.page-title {
   font-size: 26px;
   margin-bottom: 8px;
   color: #1e293b;
 }
 
-.contact-hero p {
+.page-subtitle {
   font-size: 14px;
   color: #475569;
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-/* الحاوية اللي فيها الكروت */
-.contact-content {
-  max-width: 700px;      /* العرض اللي نبيه */
-  width: 100%;
-  margin: 0 auto;        /* تخليها في النص */
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-/* كرت معلومات التواصل و كرت الفورم */
-.contact-card,
-.contact-form-card {
+/* الكرت نفسه في نص الصفحة */
+.contact-card {
   background: #ffffff;
   border-radius: 12px;
   padding: 22px 26px;
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-  width: 100%;           /* نفس عرض الحاوية */
+  width: 100%;
+  max-width: 700px;      /* عرض الكرت */
+  margin: 0 auto 30px;   /* يخليه في النص */
 }
 
-/* النص الصغير تحت عنوان الكرت */
-.contact-note {
-  font-size: 13px;
-  color: #64748b;
-  margin-bottom: 15px;
+/* محتوى الكرت */
+.card-title {
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #1e293b;
 }
 
-/* سطور معلومات التواصل */
-.contact-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.contact-list li {
+.contact-line {
   display: flex;
   justify-content: space-between;
   font-size: 14px;
   color: #1f2933;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
-.contact-label {
+.label {
   font-weight: 600;
 }
 
-.contact-value {
+.value {
   color: #334155;
 }
 
-/* نموذج المراسلة */
-.contact-form-card h3 {
-  margin-bottom: 15px;
-}
-
-.contact-form-card form {
-  text-align: right;
-}
-
-.form-group {
-  margin-bottom: 12px;
-  text-align: right;
-}
-
-.form-group label {
-  display: block;
-  font-size: 13px;
-  margin-bottom: 4px;
-  color: #334155;
-}
-
-.contact-form-card input,
-.contact-form-card textarea {
-  font-size: 14px;
-}
-
-/* زر الإرسال */
-.btn-main {
-  width: 100%;
-  background: #3b82f6;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 0;
-  color: #fff;
-  font-size: 15px;
-  cursor: pointer;
-  transition: 0.2s;
-  margin-top: 8px;
-}
-
-.btn-main:hover {
-  background: #2563eb;
-  transform: translateY(-1px);
-}
 
 
 
