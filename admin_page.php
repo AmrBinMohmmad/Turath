@@ -8,7 +8,7 @@ $admin = ['id'=>1,'name'=>'Admin Demo'];
 $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
