@@ -608,10 +608,6 @@ footer {
     justify-content: space-between;
     align-items: center;
 }
-/* =========================
-   صفحة تواصل معنا
-   ========================= */
-
 .contact-page {
   flex: 1;
   display: flex;
@@ -639,8 +635,9 @@ footer {
 
 /* الحاوية اللي فيها الكروت */
 .contact-content {
+  max-width: 700px;      /* العرض اللي نبيه */
   width: 100%;
-  max-width: 700px;
+  margin: 0 auto;        /* تخليها في النص */
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -653,6 +650,7 @@ footer {
   border-radius: 12px;
   padding: 22px 26px;
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  width: 100%;           /* نفس عرض الحاوية */
 }
 
 /* النص الصغير تحت عنوان الكرت */
@@ -706,8 +704,6 @@ footer {
   color: #334155;
 }
 
-/* نستفيد من الستايل العام لـ input في الأعلى
-   فنكتفي بضبط التكبير هنا لو احتجت */
 .contact-form-card input,
 .contact-form-card textarea {
   font-size: 14px;
