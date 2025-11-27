@@ -38,8 +38,8 @@ $projects = $conn->query("
       </div>
     </a>
     <nav>
-      <div class="header-title">لهجتنا � المستخدم</div>
-      <span>Welcome, <?= htmlspecialchars($user_name) ?></span>
+      <!---<div class="header-title">لهجتنا � المستخدم</div>--->
+      <span>مرحباً بك، <?= htmlspecialchars($user_name) ?></span>
       <a href="user_answers.php" class="button">إجاباتي</a>
       <a href="logout.php">تسجيل الخروج</a>
     </nav>
@@ -48,7 +48,7 @@ $projects = $conn->query("
 
 <div class="container">
   <div class="card">
-    <h2>Available Projects</h2>
+    <h2>الاختبارات المتاحة</h2>
     
     <?php if($projects->num_rows > 0): ?>
         <?php while($p = $projects->fetch_assoc()): 
@@ -72,8 +72,8 @@ $projects = $conn->query("
               <div>
                 <strong style="font-size:1.1em;"><?= htmlspecialchars($p['card_name']) ?></strong><br>
                 <span class="small" style="color:#666;">
-                    Total Questions: <?= $total_q ?> � 
-                    Users Participated: <?= (int)$p['completed_users'] ?> / <?= (int)$p['number_of_users'] ?>
+                    مجموع الاسئلة: <?= $total_q ?> � 
+                    المستخدمون الذين شاركوا: <?= (int)$p['completed_users'] ?> / <?= (int)$p['number_of_users'] ?>
                 </span>
               </div>
               <div>
@@ -84,13 +84,13 @@ $projects = $conn->query("
             </div>
             
             <div style="margin-top:12px;">
-              <div class="small">Your progress: <?= $progress ?>% (<?= $answered ?>/<?= $total_q ?>)</div>
+              <div class="small">مستوى تقدمك: <?= $progress ?>% (<?= $answered ?>/<?= $total_q ?>)</div>
               <div class="progress-bar"><div class="progress-fill" style="width:<?= $progress ?>%;"></div></div>
             </div>
           </div>
         <?php endwhile; ?>
     <?php else: ?>
-        <p>No projects available at the moment.</p>
+        <p>لا توجد اختبارات متاحة حاليًا.</p>
     <?php endif; ?>
     
   </div>
