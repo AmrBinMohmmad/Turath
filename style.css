@@ -868,6 +868,155 @@ footer {
   transform: translateY(0);
   box-shadow: 0 3px 8px rgba(30, 64, 175, 0.25);
 }
+/* ===== تصميم صفحة الإجابات ===== */
+
+/* الحاوية الرئيسية */
+.answers-page {
+  max-width: 960px;
+  margin: 40px auto 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  padding: 28px 32px 30px;
+}
+
+/* عنوان الصفحة */
+.answers-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.answers-header h2 {
+  font-size: 24px;
+  margin-bottom: 6px;
+  color: #1f2937;
+}
+
+.answers-header p {
+  font-size: 13px;
+  color: #64748b;
+}
+
+/* كرت كل اختبار */
+.project-block {
+  margin-top: 24px;
+  padding: 18px 20px 16px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+/* عنوان الاختبار */
+.project-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-title span {
+  font-size: 13px;
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+/* كرت الإجابة */
+.ans-card {
+  padding: 12px 14px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+}
+
+/* Hover */
+.ans-card:hover {
+  transform: translateY(-4px);
+  border-color: #c7d2fe;
+  background: #fdfefe;
+  box-shadow: 0 14px 30px rgba(148, 163, 184, 0.4);
+}
+
+/* صف السؤال والبادج */
+.ans-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* نص السؤال */
+.question-text {
+  font-size: 13px;
+  color: #0f172a;
+  line-height: 1.6;
+}
+
+/* نص الإجابة */
+.answer-text {
+  font-size: 13px;
+  color: #111827;
+}
+
+.answer-text strong {
+  color: #4b5563;
+}
+
+/* الإجابة الصحيحة */
+.correct-ans {
+  color: #059669;
+  font-weight: 600;
+  font-size: 12px;
+  margin-top: 3px;
+}
+
+/* الإجابة الخاطئة */
+.wrong-ans {
+  color: #dc2626;
+  text-decoration: line-through;
+}
+
+/* البادج */
+.score-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+/* ألوان البادج */
+.bg-green { background-color: #10b981; }
+.bg-red   { background-color: #ef4444; }
+.bg-gray  { background-color: #6b7280; }
+
+/* لا توجد إجابات */
+.no-answers {
+  text-align: center;
+  padding: 25px 0 10px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* شاشة الجوال */
+@media (max-width: 768px) {
+  .answers-page {
+    margin: 20px 12px 24px;
+    padding: 20px 18px 22px;
+  }
+  .project-block {
+    padding: 14px;
+  }
+}
+
 
 
 
