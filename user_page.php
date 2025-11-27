@@ -20,20 +20,31 @@ $projects = $conn->query("
 ");
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <title>User Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لهجتنا | اختبر معرفتك بثقافة وتراث مناطق المملكة</title>
+  <link rel="icon" type="image/png" href="Favicon.png">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="navbar container">
-  <div class="header-title">Data Annotation � User</div>
-  <div>
-    <span>Welcome, <?= htmlspecialchars($user_name) ?></span>
-    <a href="user_answers.php" class="button">My Answers</a>
-  </div>
-</div>
+  <header class="navbar">
+    <a href="index.html" class="logo" style="text-decoration: none;">
+      <img src="Favicon.png" alt="شعار لهجتنا">
+      <div class="logo-text">
+        <h1 class="site-title">لهجتنا</h1>
+        <p class="site-tagline">اختبر معرفتك بثقافة وتراث مناطق المملكة</p>
+      </div>
+    </a>
+    <nav>
+      <div class="header-title">لهجتنا � المستخدم</div>
+      <span>Welcome, <?= htmlspecialchars($user_name) ?></span>
+      <a href="user_answers.php" class="button">إجاباتي</a>
+      <a href="logout.php">تسجيل الخروج</a>
+    </nav>
+  </header>
+<main class="types-wrapper">
 
 <div class="container">
   <div class="card">
@@ -84,5 +95,9 @@ $projects = $conn->query("
     
   </div>
 </div>
+</main>
+  <footer>
+    <p>© 2025 لهجتنا</p>
+  </footer>
 </body>
 </html>
