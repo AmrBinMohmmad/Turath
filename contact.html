@@ -1,36 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Data Annotation</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تواصل معنا | لهجتنا</title>
   <link rel="icon" type="image/png" href="Favicon.png">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
- <header class="navbar">
-  <a href="index.html" class="logo">
-    <img src="Favicon.png" alt="Logo">
-     <h1>Data Annotation</h1>
-    </div>
+
+  <header class="navbar">
+  <a href="index.html" class="logo" style="text-decoration: none;">
+      <img src="Favicon.png" alt="شعار لهجتنا">
+      <div class="logo-text">
+        <h1 class="site-title">لهجتنا</h1>
+        <p class="site-tagline">اختبر معرفتك بثقافة وتراث مناطق المملكة</p>
+      </div>
+    </a>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="signup.php">Sign up</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="index.html">الرئيسية</a>
+      <a href="signup.php">تسجيل / دخول</a>
+      <a href="about.html">عن الموقع</a>
+      <a href="contact.html">تواصل معنا</a>
     </nav>
   </header>
 
-  <main class="hero">
-    <div class="hero-content">
-      <h2>Contact Us</h2>
-      <p>For any questions about the platform or project, reach out by email.</p>
-      <p><strong>Email:</strong> s445002957@uqu.edu.sa</p>
-    </div>
+ <main class="contact-page">
+    <section class="contact-hero">
+      <h2>تواصل معنا</h2>
+      <p>
+        عندك استفسار، اقتراح، ملاحظة أو حبّيت تتواصل معنا بخصوص موقع لهجتنا؟
+        أرسل لنا وسنرد عليك في أقرب وقت ممكن.
+      </p>
+    </section>
+
+    <section class="contact-content">
+      <!-- معلومات التواصل -->
+      <div class="contact-card">
+        <h3>معلومات التواصل</h3>
+        <p class="contact-note">عدّل بيانات التواصل هنا بالمعلومات الحقيقية الخاصة فيك.</p>
+
+        <ul class="contact-list">
+          <li>
+            <span class="contact-label">البريد الإلكتروني:</span>
+            <span class="contact-value">s445002957@uqu.edu.sa</span>
+          </li>
+          <li>
+            <span class="contact-label">رقم التواصل (واتساب):</span>
+            <span class="contact-value">0543605668</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- نموذج مراسلة (بدون باك إند) -->
+      <div class="contact-form-card">
+        <h3>أرسل لنا رسالة</h3>
+        <form>
+          <div class="form-group">
+            <label for="name">الاسم</label>
+            <input type="text" id="name" placeholder="اكتب اسمك">
+          </div>
+
+          <div class="form-group">
+            <label for="email">البريد الإلكتروني</label>
+            <input type="email" id="email" placeholder="your@email.com">
+          </div>
+
+          <div class="form-group">
+            <label for="message">الرسالة</label>
+            <textarea id="message" rows="4" placeholder="اكتب رسالتك هنا"></textarea>
+          </div>
+
+          <button type="button" class="btn btn-main">إرسال</button>
+        </form>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>© 2025 Data Annotation</p>
+    <p>© 2025 لهجتنا</p>
   </footer>
+
 </body>
 </html>
