@@ -23,11 +23,11 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
     <nav>
       <span><?= e($admin['name']) ?></span>
       <a href="create_project.php" class="button">Create Project</a>
-      <a href="user_page.php">View User View</a>
-      <a href="logout.php">Logout</a>
+      <a href="logout.php">Logout</a><a href="logout.php">Logout</a>
+      <!---<a href="user_page.php">View User View</a>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html">Contact</a>--->
     </nav>
 </header>
 <main class="types-wrapper">
