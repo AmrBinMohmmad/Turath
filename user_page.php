@@ -24,7 +24,7 @@ $projects = $conn->query("
 <head>
 <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>لهجتنا | اختبر معرفتك بثقافة وتراث مناطق المملكة</title>
+  <title> لهجتنا | لوحة تحكم المستخدم </title>
   <link rel="icon" type="image/png" href="Favicon.png">
   <link rel="stylesheet" href="style.css" />
 </head>
