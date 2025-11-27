@@ -39,7 +39,7 @@ $projects = $conn->query("
     </a>
     <nav>
       <!---<div class="header-title">لهجتنا � المستخدم</div>--->
-      <span>مرحباً بك، <?= htmlspecialchars($user_name) ?></span><br>
+      <span>مرحباً بك، <?= htmlspecialchars($user_name) ?></span><br><hr>
       <a href="user_answers.php" class="button">إجاباتي</a>
       <a href="logout.php">تسجيل الخروج</a>
     </nav>
