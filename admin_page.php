@@ -12,7 +12,7 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
 <head>
 <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>لهجتنا | اختبر معرفتك بثقافة وتراث مناطق المملكة</title>
+  <title> لهجتنا | لوحة تحكم المسؤول  </title>
   <link rel="icon" type="image/png" href="Favicon.png">
   <link rel="stylesheet" href="style.css" />
 </head>
