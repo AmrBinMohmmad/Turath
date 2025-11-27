@@ -1008,7 +1008,6 @@ footer {
   font-size: 14px;
 }
 
-/* شاشة الجوال */
 @media (max-width: 768px) {
   .answers-page {
     margin: 20px 12px 24px;
@@ -1019,7 +1018,7 @@ footer {
   }
 }
 .admin-wrapper {
-  max-width: 700px;
+  max-width: 1100px;            
   margin: 40px auto;
   background: #fff;
   border-radius: 18px;
@@ -1033,11 +1032,17 @@ footer {
   color: #1e3a8a;
 }
 
+.admin-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  direction: rtl;
+}
+
 .project-card {
   padding: 16px 18px;
   border: 1px solid #e5e7eb;
   background: #ffffff;
-  margin-bottom: 12px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.04);
   transition: .2s ease;
@@ -1071,7 +1076,6 @@ footer {
   transform: translateY(-1px);
 }
 
-/* زر إنشاء اختبار */
 .create-btn {
   display: block;
   width: 100%;
@@ -1091,12 +1095,7 @@ footer {
   background: #16a34a;
   transform: translateY(-2px);
 }
-.admin-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
-  direction: rtl;
-}
+
 
 
 
