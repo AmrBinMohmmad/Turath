@@ -23,7 +23,7 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
     <nav>
       <span><?= e($admin['name']) ?></span>
       <a href="create_project.php" class="button">Create Project</a>
-      <a href="logout.php">Logout</a><a href="logout.php">Logout</a>
+      <a href="logout.php">Logout</a>
       <!---<a href="user_page.php">View User View</a>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
@@ -32,7 +32,7 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
 </header>
 <main class="types-wrapper">
 <div class="container">
-  <h2>All Projects</h2>
+  <h2>All Projects</h2><br>
   <?php while($p = $projects->fetch_assoc()): ?>
     <div class="card">
         <strong><?= e($p['card_name']) ?></strong><br>
