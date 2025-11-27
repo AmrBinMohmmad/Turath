@@ -31,7 +31,7 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
     </nav>
 </header>
 <main class="types-wrapper">
-<div class="container">
+<div class="admin-content">
   <h2>All Projects</h2><br>
   <?php while($p = $projects->fetch_assoc()): ?>
     <div class="card">
