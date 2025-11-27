@@ -663,22 +663,6 @@ footer {
 .value {
   color: #334155;
 }
-.login-nav {
-  display: flex;
-  gap: 2px; /* قللت المسافة هنا */
-  align-items: center;
-}
-
-.login-nav a,
-.login-nav span {
-  color: #1e3a8a;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.login-nav a:hover {
-  color: #3b82f6;
-}
 
 
 
