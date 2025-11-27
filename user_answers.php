@@ -45,7 +45,6 @@ $projects = $conn->query("SELECT DISTINCT p.id, p.card_name
       </div>
     </a>
     <nav>
-      <span>مرحباً بك، <?= htmlspecialchars($user_name) ?></span><br>
       <div>
         <!---<div class="header-title">My Answers History</div> --->
         <a href="user_page.php" class="button">العودة إلى لوحة التحكم</a>
