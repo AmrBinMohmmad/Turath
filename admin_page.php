@@ -10,11 +10,11 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>لوحة المسؤول | لهجتنا</title>
-<link rel="icon" type="image/png" href="Favicon.png">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة المسؤول | لهجتنا</title>
+  <link rel="icon" type="image/png" href="Favicon.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -36,14 +36,16 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
   <div class="admin-wrapper">
     <h2>جميع الاختبارات</h2>
 
-    <?php while($p = $projects->fetch_assoc()): ?>
-      <div class="project-card">
-        <strong><?= e($p['card_name']) ?></strong><br>
-        عدد الأسئلة: <?= (int)$p['number_of_question'] ?> — عدد المستخدمين: <?= (int)$p['number_of_users'] ?>
-        <br>
-        <a class="view-btn" href="admin_project_answers.php?id=<?= (int)$p['id'] ?>">مشاهدة الأجوبة</a>
-      </div>
-    <?php endwhile; ?>
+    <div class="admin-cards-grid">
+      <?php while($p = $projects->fetch_assoc()): ?>
+        <div class="project-card">
+          <strong><?= e($p['card_name']) ?></strong><br>
+          عدد الأسئلة: <?= (int)$p['number_of_question'] ?> — عدد المستخدمين: <?= (int)$p['number_of_users'] ?>
+          <br>
+          <a class="view-btn" href="admin_project_answers.php?id=<?= (int)$p['id'] ?>">مشاهدة الأجوبة</a>
+        </div>
+      <?php endwhile; ?>
+    </div>
 
     <!-- زر إنشاء اختبار تحت القائمة -->
     <a href="create_project.php" class="create-btn">➕ إنشاء اختبار جديد</a>
