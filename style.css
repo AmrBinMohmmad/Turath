@@ -828,6 +828,46 @@ footer {
     padding: 30px 12px 30px;
   }
 }
+/* تأثير hover على الكروت */
+.quiz-card {
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.quiz-card:hover {
+  transform: translateY(-8px);
+  border-color: #c7d2fe;
+  box-shadow: 0 20px 32px rgba(30, 58, 138, 0.18);
+}
+
+/* تحسين زر بداية الاختبار */
+.quiz-button {
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  transition: .25s ease;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
+}
+
+/* Hover للزر */
+.quiz-button:hover {
+  background: linear-gradient(90deg, #1d4ed8, #1e40af);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(30, 64, 175, 0.45);
+}
+
+/* عند الضغط */
+.quiz-button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(30, 64, 175, 0.25);
+}
+
 
 
 
