@@ -36,15 +36,17 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
     </nav>
   </header>
 <main class="types-wrapper">
-<div class="card">
-  <h2>جميع الاختبارات</h2><br>
-  <?php while($p = $projects->fetch_assoc()): ?>
-    <div class="card">
-        <strong><?= e($p['card_name']) ?></strong><br>
-        عدد الاسئلة: <?= (int)$p['number_of_question'] ?> � المستخدمون: <?= (int)$p['number_of_users'] ?><br><br>
-        <a class="button" href="admin_project_answers.php?id=<?= (int)$p['id'] ?>">مشاهدة الأجوبة</a>
-    </div>
-<?php endwhile; ?>
+<div class="container">
+  <div class="card">
+    <h2>جميع الاختبارات</h2><br>
+    <?php while($p = $projects->fetch_assoc()): ?>
+      <div class="card">
+          <strong><?= e($p['card_name']) ?></strong><br>
+          عدد الاسئلة: <?= (int)$p['number_of_question'] ?> � المستخدمون: <?= (int)$p['number_of_users'] ?><br><br>
+          <a class="button" href="admin_project_answers.php?id=<?= (int)$p['id'] ?>">مشاهدة الأجوبة</a>
+      </div>
+  <?php endwhile; ?>
+  </div>
 </div>
 </main>
   <footer>
