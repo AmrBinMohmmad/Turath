@@ -728,7 +728,6 @@ footer {
   color: #475569;
 }
 
-/* شبكة الكروت من اليمين إلى اليسار */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -736,7 +735,7 @@ footer {
   direction: rtl;
 }
 
-/* الكرت الواحد */
+
 .quiz-card {
   background: #ffffff;
   border-radius: 14px;
@@ -746,7 +745,10 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  text-align: right;   
 }
+
 
 .quiz-card-header {
   display: flex;
