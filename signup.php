@@ -30,9 +30,13 @@ function isActiveForm($formName, $activeForm){
 <body>
 
   <header class="navbar">
-    <a href="index.html" class="logo" style="text-decoration:none;">
+  <a href="index.html" class="logo" style="text-decoration:none;">
       <img src="Favicon.png" alt="شعار لهجتنا">
-      <h1>لهجتنا</h1>
+      <div class="logo-text">
+          <h1 class="site-title">لهجتنا</h1>
+           <p class="site-tagline">اختبر معرفتك بثقافة وتراث مناطق المملكة</p>
+          
+      </div>
     </a>
     <nav>
       <a href="index.html">الرئيسية</a>
