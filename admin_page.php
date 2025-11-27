@@ -15,14 +15,22 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="navbar container">
-  <div class="header-title">Data Annotation — Admin</div>
-  <div>
-    <span><?= e($admin['name']) ?></span>
-    <a href="create_project.php" class="button">Create Project</a>
-  </div>
-</div>
-
+<header class="navbar">
+  <a href="index.html" class="logo">
+    <img src="Favicon.png" alt="Logo">
+     <h1>Data Annotation - Admin</h1>
+    </div>
+    <nav>
+      <span><?= e($admin['name']) ?></span>
+      <a href="create_project.php" class="button">Create Project</a>
+      <a href="user_page.php">View User View</a>
+      <a href="logout.php">Logout</a>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+</header>
+<main class="types-wrapper">
 <div class="container">
   <h2>All Projects</h2>
   <?php while($p = $projects->fetch_assoc()): ?>
@@ -33,5 +41,9 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
     </div>
 <?php endwhile; ?>
 </div>
+</main>
+  <footer>
+    <p>© 2025 Data Annotation</p>
+  </footer>
 </body>
 </html>
