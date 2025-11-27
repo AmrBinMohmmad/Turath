@@ -5,18 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>تواصل معنا | لهجتنا</title>
   <link rel="icon" type="image/png" href="Favicon.png">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header class="navbar">
-  <a href="index.html" class="logo" style="text-decoration: none;">
-      <img src="Favicon.png" alt="شعار لهجتنا">
-      <div class="logo-text">
-        <h1 class="site-title">لهجتنا</h1>
-        <p class="site-tagline">اختبر معرفتك بثقافة وتراث مناطق المملكة</p>
+    <a href="index.html" style="text-decoration: none;">
+      <div class="logo">
+        <img src="Favicon.png" alt="شعار لهجتنا">
+        <div class="logo-text">
+          <h1 class="site-title">لهجتنا</h1>
+          <p class="site-tagline">اختبر معرفتك بثقافة وتراث مناطق المملكة</p>
+        </div>
       </div>
     </a>
+
     <nav>
       <a href="index.html">الرئيسية</a>
       <a href="signup.php">تسجيل / دخول</a>
@@ -25,14 +28,56 @@
     </nav>
   </header>
 
- <main class="hero">
-    <div class="hero-content">
+  <main class="contact-page">
+    <section class="contact-hero">
       <h2>تواصل معنا</h2>
-      <p>لأي استفسارات حول المنصة أو المشروع، يرجى التواصل عبر البريد الإلكتروني.</p>
-      <p><strong>Email:</strong> s445002957@uqu.edu.sa</p>
-    </div>
-  </main>
+      <p>
+        عندك استفسار، اقتراح، ملاحظة أو حاب تتواصل معنا بخصوص موقع لهجتنا؟
+        أرسل لنا وسنرد عليك في أقرب وقت ممكن.
+      </p>
+    </section>
 
+    <section class="contact-content">
+      <!-- معلومات التواصل -->
+      <div class="contact-card">
+        <h3>معلومات التواصل</h3>
+        <p class="contact-note">تقدر تعدّل بيانات التواصل هنا بالمعلومات الحقيقية الخاصة فيك.</p>
+
+        <ul class="contact-list">
+          <li>
+            <span class="contact-label">البريد الإلكتروني:</span>
+            <span class="contact-value">s445002957@st.uqu.sa</span>
+          </li>
+          <li>
+            <span class="contact-label">رقم التواصل (واتساب):</span>
+            <span class="contact-value">0543605668</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="contact-form-card">
+        <h3>أرسل لنا رسالة</h3>
+        <form>
+          <div class="form-group">
+            <label for="name">الاسم</label>
+            <input type="text" id="name" placeholder="اكتب اسمك">
+          </div>
+
+          <div class="form-group">
+            <label for="email">البريد الإلكتروني</label>
+            <input type="email" id="email" placeholder="you@example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="message">الرسالة</label>
+            <textarea id="message" rows="4" placeholder="اكتب رسالتك هنا"></textarea>
+          </div>
+
+          <button type="button" class="btn btn-main">إرسال</button>
+        </form>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <p>© 2025 لهجتنا</p>
