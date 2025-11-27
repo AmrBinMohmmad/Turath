@@ -666,7 +666,7 @@ footer {
 .auth-links {
   display: inline-flex;
   align-items: center;
-  gap: 3px; /* تقليل المسافة */
+  gap: 0px; /* تقليل المسافة */
 }
 
 .auth-links a {
