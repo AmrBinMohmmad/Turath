@@ -48,7 +48,7 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
     </div>
 
     <!-- زر إنشاء اختبار تحت القائمة -->
-    <a href="create_project.php" class="create-btn">➕ إنشاء اختبار جديد</a>
+    <a href="create_project.php" class="create-btn"> إنشاء اختبار جديد</a>
   </div>
 </main>
 
