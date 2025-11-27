@@ -19,56 +19,60 @@ function isActiveForm($formName, $activeForm){
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome | Data Annotation</title>
+  <title>تسجيل / دخول | لهجتنا</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="Favicon.png">
 </head>
 <body>
+
   <header class="navbar">
-  <a href="index.html" class="logo">
-    <img src="Favicon.png" alt="Logo">
-     <h1>Data Annotation</h1>
-    </div>
+    <a href="index.html" class="logo" style="text-decoration:none;">
+      <img src="Favicon.png" alt="شعار لهجتنا">
+      <h1>لهجتنا</h1>
+    </a>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="signup.php">Sign up</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="index.html">الرئيسية</a>
+      <a href="signup.php">تسجيل / دخول</a>
+      <a href="about.html">عن الموقع</a>
+      <a href="contact.html">تواصل معنا</a>
     </nav>
   </header>
 
   <div class="container">
+    <!-- نموذج تسجيل الدخول -->
     <div class="form_box <?= isActiveForm('login',$activeForm); ?>" id="login-form">
       <form action="login_register.php" method="post">
-        <h2>Login</h2>
+        <h2>تسجيل الدخول</h2>
         <?= showError($errors['login']); ?>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit" name="login">Login</button>
-        <p>Don't have an account? <a onclick="showForm('register-form')">Register</a></p>
+        <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+        <input type="password" name="password" placeholder="كلمة المرور" required>
+        <button type="submit" name="login">دخول</button>
+        <p>ليس لديك حساب؟ <a onclick="showForm('register-form')">إنشاء حساب</a></p>
       </form>
     </div>
 
+    <!-- نموذج إنشاء حساب جديد -->
     <div class="form_box <?= isActiveForm('register',$activeForm); ?>" id="register-form">
       <form action="login_register.php" method="post">
-        <h2>Register</h2>
+        <h2>إنشاء حساب</h2>
         <?= showError($errors['register']); ?>
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit" name="register">Register</button>
-        <p>Already have an account? <a onclick="showForm('login-form')">Login</a></p>
+        <input type="text" name="name" placeholder="الاسم" required>
+        <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+        <input type="password" name="password" placeholder="كلمة المرور" required>
+        <button type="submit" name="register">إنشاء حساب</button>
+        <p>لديك حساب بالفعل؟ <a onclick="showForm('login-form')">تسجيل الدخول</a></p>
       </form>
     </div>
   </div>
 
   <footer>
-    <p>© 2025 Data Annotation</p>
+    <p>© 2025 لهجتنا</p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
