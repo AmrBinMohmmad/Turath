@@ -18,11 +18,13 @@ $projects = $conn->query("SELECT DISTINCT p.id, p.card_name
                           ORDER BY p.id DESC");
 ?>
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<title>My Answers</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>لهجتنا | إجاباتي </title>
+<link rel="icon" type="image/png" href="Favicon.png">
+<link rel="stylesheet" href="style.css" />
 <style>
     .ans-card { padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; background: #fff; }
     .correct-ans { color: green; font-weight: bold; }
@@ -34,22 +36,36 @@ $projects = $conn->query("SELECT DISTINCT p.id, p.card_name
 </style>
 </head>
 <body>
-<div class="navbar container">
-    <div class="header-title">My Answers History</div>
-    <a href="user_page.php" class="button">Back to Dashboard</a>
-</div>
-
+    <header class="navbar">
+    <a href="index.html" class="logo" style="text-decoration: none;">
+      <img src="Favicon.png" alt="شعار لهجتنا">
+      <div class="logo-text">
+        <h1 class="site-title">لهجتنا</h1>
+        <p class="site-tagline">اختبر معرفتك بثقافة وتراث مناطق المملكة</p>
+      </div>
+    </a>
+    <nav>
+      <span>مرحباً بك، <?= htmlspecialchars($user_name) ?></span><br>
+      <div>
+        <!---<div class="header-title">My Answers History</div> --->
+        <a href="user_page.php" class="button">العودة إلى لوحة التحكم</a>
+      </div>
+    </nav>
+  </header>
+  
+<main class="types-wrapper">
 <div class="container">
-<h2>My Submitted Answers</h2>
+  <div class="card">
+<h2>الإجابات التي قدمتها:</h2>
 
 <?php if($projects->num_rows == 0): ?>
-    <p>You haven't answered any projects yet.</p>
+    <p>لم تقم بالإجابة على أي اختبار بعد.</p>
 <?php endif; ?>
 
 <?php while($p = $projects->fetch_assoc()): ?>
 <div class="card">
     <h3 style="border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">
-        Project: <?= e($p['card_name']) ?>
+        اختبار: <?= e($p['card_name']) ?>
     </h3>
     
     <?php
@@ -94,11 +110,11 @@ $projects = $conn->query("SELECT DISTINCT p.id, p.card_name
     <div class="ans-card">
         <span class="score-badge <?= $badge_color ?>"><?= $score_text ?></span>
         <div style="margin-bottom: 8px;">
-            <strong>Q:</strong> <?= e($parsed['question']) ?>
+            <strong>السؤال:</strong> <?= e($parsed['question']) ?>
         </div>
         
         <div>
-            <strong>Your Answer:</strong> 
+            <strong>اجابتك:</strong> 
             <span class="<?= ($r['score']!==null && $r['score']==0) ? 'wrong-ans' : '' ?>">
                 <?= e($student_ans) ?>
             </span>
@@ -106,7 +122,7 @@ $projects = $conn->query("SELECT DISTINCT p.id, p.card_name
         
         <?php if($r['score'] !== null && $r['score'] == 0 && !empty($correct_ans)): ?>
             <div style="margin-top:5px; color: #059669; font-size: 0.9em;">
-                Correct Answer was: <?= e($correct_ans) ?>
+                الإجابة الصحيحة هي: <?= e($correct_ans) ?>
             </div>
         <?php endif; ?>
     </div>
@@ -114,7 +130,11 @@ $projects = $conn->query("SELECT DISTINCT p.id, p.card_name
     <?php endwhile; ?>
 </div>
 <?php endwhile; ?>
-
 </div>
+</div>
+</main>
+  <footer>
+    <p>© 2025 لهجتنا</p>
+  </footer>
 </body>
 </html>
