@@ -663,6 +663,27 @@ footer {
 .value {
   color: #334155;
 }
+.auth-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px; /* تقليل المسافة */
+}
+
+.auth-links a {
+  color: #1e3a8a;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-links a:hover {
+  color: #3b82f6;
+}
+
+.divider {
+  font-size: 18px;
+  color: #1e3a8a;
+  font-weight: 500;
+}
 
 
 
