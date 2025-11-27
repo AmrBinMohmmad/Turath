@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+<html lang="en">
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Data Annotation</title>
   <title>عن لهجتنا | اختبر معرفتك بثقافة وتراث مناطق المملكة</title>
   <link rel="icon" type="image/png" href="Favicon.png">
   <link rel="stylesheet" href="style.css" />
@@ -10,17 +12,22 @@
 <body>
 
   <header class="navbar">
-    <a href="index.html" style="text-decoration: none;">
-      <div class="logo">
-        <img src="Favicon.png" alt="شعار لهجتنا">
-        <div class="logo-text">
-          <h1 class="site-title">لهجتنا</h1>
-          <p class="site-tagline">اختبر معرفتك بثقافة وتراث مناطق المملكة</p>
-        </div>
+  <a href="index.html" class="logo">
+    <img src="Favicon.png" alt="Logo">
+     <h1>Data Annotation</h1>
+    </div>
+  <a href="index.html" class="logo" style="text-decoration: none;">
+      <img src="Favicon.png" alt="شعار لهجتنا">
+      <div class="logo-text">
+        <h1 class="site-title">لهجتنا</h1>
+        <p class="site-tagline">اختبر معرفتك بثقافة وتراث مناطق المملكة</p>
       </div>
     </a>
-
     <nav>
+      <a href="index.html">Home</a>
+      <a href="signup.php">Sign up</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
       <a href="index.html">الرئيسية</a>
       <a href="signup.php">تسجيل / دخول</a>
       <a href="about.html">عن الموقع</a>
@@ -31,6 +38,8 @@
   <main class="about-page-main">
     <!-- هيرو صفحة عن الموقع -->
     <div class="about-hero">
+      <h2>Precision Data: The Future of AI.</h2>
+      <p>We built this platform to create high-quality, human-labeled data. This precision is the critical groundwork for training reliable, unbiased AI models.</p>
       <h2>ما هو موقع لهجتنا؟</h2>
       <p>
         لهجتنا منصة تفاعلية لاختبار معرفتك باللهجات والمصطلحات الشعبية 
@@ -43,6 +52,9 @@
     <div class="content-section">
 
       <div class="section-block">
+        <h3>Our Origin: Built by UQU Students.</h3>
+        <p>We started Data Annotation as a Computer Science project at UQU. We understood that the success of any complex AI (like advanced chatbots or self-driving systems) depends entirely on high-quality data.</p>
+        <p>Our academic background ensures technical precision and strong quality control. We aim to meet the exact needs of ML engineers by providing the "ground truth" data required for real-world AI applications.</p>
         <h3>البداية: مشروع طلابي من جامعة أم القرى</h3>
         <p>
           انطلق موقع <strong>لهجتنا</strong> كمشروع لطلاب قسم علوم الحاسب 
@@ -57,6 +69,8 @@
       </div>
 
       <div class="section-block">
+        <h3>Our Process: Four Core Annotation Modes.</h3>
+        <p>We handle diverse tasks by supporting multiple annotation types, ensuring we can capture the required data structure for any AI model, from NLP to Computer Vision.</p>
         <h3>كيف يعمل لهجتنا؟</h3>
         <p>
           يعتمد الموقع على مجموعة من الأسئلة المبنية على مصطلحات وتعابير 
@@ -64,6 +78,10 @@
           والمنطقة المنتشرة فيها.
         </p>
         <ul>
+          <li>Open-ended Q&A: Users provide free-text answers.</li>
+          <li>Multiple Choice (MCQ): Supports both text and image options for complex classification.</li>
+          <li>Listed Item Selection: Users tag specific entities or items from a provided list.</li>
+          <li>True/False: Simple binary choice for quick validation tasks.</li>
           <li>كل سؤال مبني على <strong>مصطلح شعبي</strong> أو تعبير من لهجة معينة.</li>
           <li>يُطلب منك اختيار المعنى الصحيح، أو تحديد المنطقة، أو إكمال الجملة المناسبة.</li>
           <li>بعض الأسئلة تكون بصيغة <strong>اختيار من متعدد</strong>، وبعضها <strong>صح / خطأ</strong> أو <strong>إكمال فراغ</strong>.</li>
@@ -72,6 +90,15 @@
       </div>
 
       <div class="section-block">
+        <h3>Professional Features for Annotators and Clients.</h3>
+        <p>We designed our platform with robust tools for quality control and reporting, making it valuable for both annotators and data scientists.</p>
+        <p>Key features include:</p>
+        <ul>
+          <li>Progress Tracking: Visualize individual annotation statistics and monitor your workload.</li>
+          <li>Quality Metrics: Track inter-annotator agreement to ensure data consistency.</li>
+          <li>Data Export: Easily download annotated data in CSV/JSON format for ML pipelines.</li>
+          <li>Flexible Work: Contribute remotely on your own schedule with user accounts for secure access.</li>
+        </ul>
         <h3>محتوى من الواقع السعودي</h3>
         <p>
           المصطلحات المستخدمة في الأسئلة مأخوذة من لهجات مختلفة مثل 
@@ -98,6 +125,9 @@
 
     <!-- قسم الدعوة للعمل -->
     <div class="cta-section">
+      <h3>Ready to Power the Future of AI?</h3>
+      <p>Start contributing today and become part of our quality-driven data community.</p>
+      <a href="signup.php" class="btn">Join the Annotator Community</a>
       <h3>جاهز تختبر لهجتك ومعرفتك؟</h3>
       <p>
         ابدأ الآن واكتشف كم كلمة ومصطلح تعرف من لهجات وتراث مناطق المملكة، 
@@ -108,8 +138,8 @@
   </main>
 
   <footer>
+    <p>© 2025 Data Annotation</p>
     <p>© 2025 لهجتنا</p>
   </footer>
 
 </body>
-</html>
