@@ -1068,6 +1068,130 @@ footer {
     justify-content: space-between;
     align-items: center;
 }
+/* =========================
+   صفحة تواصل معنا
+   ========================= */
+
+.contact-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px 40px;
+}
+
+.contact-hero {
+  text-align: center;
+  max-width: 650px;
+  margin-bottom: 30px;
+}
+
+.contact-hero h2 {
+  font-size: 26px;
+  margin-bottom: 8px;
+  color: #1e293b;
+}
+
+.contact-hero p {
+  font-size: 14px;
+  color: #475569;
+}
+
+/* الحاوية اللي فيها الكروت */
+.contact-content {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* كرت معلومات التواصل و كرت الفورم */
+.contact-card,
+.contact-form-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 22px 26px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+/* النص الصغير تحت عنوان الكرت */
+.contact-note {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 15px;
+}
+
+/* سطور معلومات التواصل */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #1f2933;
+  margin-bottom: 8px;
+}
+
+.contact-label {
+  font-weight: 600;
+}
+
+.contact-value {
+  color: #334155;
+}
+
+/* نموذج المراسلة */
+.contact-form-card h3 {
+  margin-bottom: 15px;
+}
+
+.contact-form-card form {
+  text-align: right;
+}
+
+.form-group {
+  margin-bottom: 12px;
+  text-align: right;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #334155;
+}
+
+/* نستفيد من الستايل العام لـ input في الأعلى
+   فنكتفي بضبط التكبير هنا لو احتجت */
+.contact-form-card input,
+.contact-form-card textarea {
+  font-size: 14px;
+}
+
+/* زر الإرسال */
+.btn-main {
+  width: 100%;
+  background: #3b82f6;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 8px;
+}
+
+.btn-main:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
 
 
 
