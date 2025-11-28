@@ -80,7 +80,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 
 <main class="types-wrapper">
 
-<div class="container">
+  <div class="admin-wrapper">
     <h2>Create New Project</h2>
     <form method="post" class="card">
         <label>Project Name:<br><input type="text" name="card_name" required></label><br><br>
@@ -102,7 +102,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
         <a class="button secondary" href="admin_page.php" style="text-align:center; display:block; margin-top:10px; background:#ccc;">Cancel</a>
     </form>
     </div>
-
+</main>
 <footer>
   <p>© 2025 لهجتنا</p>
 </footer>
