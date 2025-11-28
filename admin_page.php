@@ -1,16 +1,8 @@
 <?php
-require "config2.php";
-session_start();
-
 require_once 'auth.php';
 require_admin();
-
-// demo admin
-$admin = ['id'=>1,'name'=>'Admin Demo'];
-
-// جلب كل الاختبارات
-$projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
 ?>
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -32,64 +24,35 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
       </div>
     </a>
     <nav>
-      <span>مرحباً أيها المسؤول</span>
-      <!--- <a href="create_project.html" class="button">إنشاء إختبار</a> --->
+      <a href="create_project.html" class="button">إنشاء إختبار</a>
       <a href="logout.php">تسجيل الخروج</a>
     </nav>
   </header>
 
-   <main class="user-dashboard">
-    <section class="user-panel">
-      <header class="user-panel-header">
-        <h2>الاختبارات المتاحة</h2>
-        <p>هنا تستطيع إدارة جميع الاختبارات ومراجعة إجابات المستخدمين.</p>
+  <main class="types-wrapper">
+    <div class="container">
+      <div class="card">
+
+        <h2>جميع الاختبارات</h2>
 
         <input type="text" id="search" placeholder="ابحث باسم الاختبار..." oninput="loadCards()"
           style="width: 100%; padding: 10px; margin: 10px 0;">
 
-    
-
-          <!-- زر إنشاء اختبار بنفس ستايل الأزرار -->
-        <a href="create_project.php" class="quiz-button" style="margin-top:10px;">
-          إنشاء اختبار جديد
-        </a>
-      </header>
         
-        <?php if ($projects && $projects->num_rows > 0): ?>
-        <!-- نفس grid المستخدم في صفحة user_page -->
-        <div class="cards-grid">
-          <?php while($p = $projects->fetch_assoc()): ?>
-            <article class="quiz-card">
-              <div class="quiz-card-header">
-                <h3 class="quiz-title"><?= e($p['card_name']) ?></h3>
+        <select id="filter-region" onchange="loadCards()" style="width: 100%; padding: 10px; margin-bottom: 15px;">
+          <option value="" disabled selected>-- Select Dialect --</option>
+            <option value="all">Mixed (Random from all)</option>
+            <option value="General">General</option>
+            <option value="Southern">Southern</option>
+            <option value="Central">Central</option>
+            <option value="Eastern">Eastern</option>
+            <option value="Northern">Northern</option>
+            <option value="Western">Western</option>
+        </select>
 
-                <span class="quiz-users">
-                  عدد المستخدمين المسموح: 
-                  <strong><?= (int)$p['number_of_users'] ?></strong>
-                </span>
-              </div>
-
-              <div class="quiz-meta">
-                <span>مجموع الأسئلة: <strong><?= (int)$p['number_of_question'] ?></strong></span>
-                <span>معرّف الاختبار: <strong>#<?= (int)$p['id'] ?></strong></span>
-              </div>
-
-              <div class="quiz-actions">
-                <a class="quiz-button" href="admin_project_answers.php?id=<?= (int)$p['id'] ?>">
-                  مشاهدة الأجوبة
-                </a>
-              </div>
-            </article>
-          <?php endwhile; ?>
-        </div>
-      <?php else: ?>
-        <p class="no-quizzes">لا توجد اختبارات حتى الآن.</p>
-      <?php endif; ?>
-    
-      <div id="cards-box"></div>
+        <div id="cards-box"></div>
       </div>
-      
-    </section>
+    </div>
   </main>
 
   <footer>
