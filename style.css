@@ -515,12 +515,7 @@ footer {
   transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 
   height: 100%;
-  display: flex; /* تحويل العنصر إلى حاوية فليكس */
-    flex-direction: row; /* جعل العناصر تتجه أفقيًا (وهي القيمة الافتراضية) */
-    flex-wrap: wrap; /* السماح للعناصر بالالتفاف إلى سطر جديد عند الحاجة */
-    gap: 20px; /* إضافة مسافة بين العناصر (البطاقات) */
-    justify-content: center; /* توسيط العناصر داخل الحاوية */
-
+  
 }
 
 .admin-container input,
