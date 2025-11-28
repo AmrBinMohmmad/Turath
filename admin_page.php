@@ -47,19 +47,7 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
         <input type="text" id="search" placeholder="ابحث باسم الاختبار..." oninput="loadCards()"
           style="width: 100%; padding: 10px; margin: 10px 0;">
 
-        <select id="filter-region" onchange="loadCards()" style="width: 100%; padding: 10px; margin-bottom: 15px;">
-          <option value="" disabled selected>-- Select Dialect --</option>
-            <option value="all">Mixed (Random from all)</option>
-            <option value="General">General</option>
-            <option value="Southern">Southern</option>
-            <option value="Central">Central</option>
-            <option value="Eastern">Eastern</option>
-            <option value="Northern">Northern</option>
-            <option value="Western">Western</option>
-        </select>
-        
-         <div id="cards-box"></div>
-      </div>
+    
 
           <!-- زر إنشاء اختبار بنفس ستايل الأزرار -->
         <a href="create_project.php" class="quiz-button" style="margin-top:10px;">
@@ -98,6 +86,8 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
         <p class="no-quizzes">لا توجد اختبارات حتى الآن.</p>
       <?php endif; ?>
     
+      <div id="cards-box"></div>
+      </div>
       
     </section>
   </main>
