@@ -1036,9 +1036,11 @@ footer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 18px;
-  direction: rtl;
- 
+  direction: rtl;              
+  justify-items: start;        
+  align-items: start;          
 }
+
 
 .project-card {
   padding: 16px 18px;
