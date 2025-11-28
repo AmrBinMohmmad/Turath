@@ -3,6 +3,13 @@ require_once 'auth.php';
 require_admin();
 ?>
 
+// demo admin
+$admin = ['id'=>1,'name'=>'Admin Demo'];
+
+// جلب كل الاختبارات
+$projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
+?>
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
