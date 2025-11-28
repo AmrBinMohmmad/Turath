@@ -51,7 +51,7 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
         </a>
       </header>
         
-       
+        <?php if ($projects && $projects->num_rows > 0): ?>
         <!-- نفس grid المستخدم في صفحة user_page -->
         <div class="cards-grid">
           <?php while($p = $projects->fetch_assoc()): ?>
@@ -80,7 +80,7 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
         </div>
       <?php else: ?>
         <p class="no-quizzes">لا توجد اختبارات حتى الآن.</p>
-      
+      <?php endif; ?>
     
        <div id="cards-box"></div>
       </div>
