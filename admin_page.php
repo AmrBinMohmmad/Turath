@@ -36,6 +36,9 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
   <div class="admin-wrapper">
     <h2>جميع الاختبارات</h2>
 
+    <!-- زر إنشاء اختبار تحت القائمة -->
+    <a href="create_project.php" class="create-btn"> إنشاء اختبار جديد</a>
+    
     <div class="admin-cards-grid">
       <?php while($p = $projects->fetch_assoc()): ?>
         <div class="project-card">
@@ -47,8 +50,6 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
       <?php endwhile; ?>
     </div>
 
-    <!-- زر إنشاء اختبار تحت القائمة -->
-    <a href="create_project.php" class="create-btn"> إنشاء اختبار جديد</a>
 </main>
 
 <footer>
