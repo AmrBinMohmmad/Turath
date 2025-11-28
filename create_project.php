@@ -88,7 +88,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
         <label>عدد المستخدمين:<br><input type="number" name="number_of_users" min="1" required></label><br><br>
         <label>عدد الأسئلة:<br><input type="number" name="number_of_question" min="1" required></label><br><br>
     
-        <label>نوع اللهجة (تصفية الأسئلة):</label>
+        <label>نوع اللهجة :</label>
             <select name="dialect_type" required>
                 <option value="" disabled selected>-- اختر اللهجة --</option>
                 <option value="all">مختلط (عشوائي من الجميع)</option>
