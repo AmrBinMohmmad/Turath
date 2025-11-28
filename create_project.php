@@ -91,7 +91,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
         <label>نوع اللهجة:</label>
             <select name="dialect_type" required>
                 <option value="" disabled selected>-- اختر اللهجة --</option>
-                <option value="all">مختلط (عشوائي من الجميع)</option>
+                <option value="all">Mixed (Random from all)</option>
                 
                 <?php foreach($unique_dialects as $dialect): ?>
                     <option value="<?= e($dialect) ?>"><?= e($dialect) ?></option>
