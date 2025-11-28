@@ -31,7 +31,6 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
     </a>
     <nav>
       <span>مرحباً أيها المسؤول</span>
-      <!--- <a href="create_project.html" class="button">إنشاء إختبار</a> --->
       <a href="logout.php">تسجيل الخروج</a>
     </nav>
   </header>
@@ -42,15 +41,16 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
         <h2>الاختبارات المتاحة</h2>
         <p>هنا تستطيع إدارة جميع الاختبارات ومراجعة إجابات المستخدمين.</p>
 
-        <input type="text" id="search" placeholder="ابحث باسم الاختبار..." oninput="loadCards()"
-          style="width: 100%; padding: 10px; margin: 10px 0;">
+
 
           <!-- زر إنشاء اختبار بنفس ستايل الأزرار -->
         <a href="create_project.php" class="quiz-button" style="margin-top:10px;">
           إنشاء اختبار جديد
         </a>
       </header>
-        
+      
+        <input type="text" id="search" placeholder="ابحث باسم الاختبار..." oninput="loadCards()"
+          style="width: 100%; padding: 10px; margin: 10px 0;">
         <?php if ($projects && $projects->num_rows > 0): ?>
         <!-- نفس grid المستخدم في صفحة user_page -->
         <div class="cards-grid">
