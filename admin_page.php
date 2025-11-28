@@ -58,6 +58,37 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
             <option value="Western">Western</option>
         </select>
 
+        <?php if ($projects && $projects->num_rows > 0): ?>
+        <!-- نفس grid المستخدم في صفحة user_page -->
+        <div class="cards-grid">
+          <?php while($p = $projects->fetch_assoc()): ?>
+            <article class="quiz-card">
+              <div class="quiz-card-header">
+                <h3 class="quiz-title"><?= e($p['card_name']) ?></h3>
+
+                <span class="quiz-users">
+                  عدد المستخدمين المسموح: 
+                  <strong><?= (int)$p['number_of_users'] ?></strong>
+                </span>
+              </div>
+
+              <div class="quiz-meta">
+                <span>مجموع الأسئلة: <strong><?= (int)$p['number_of_question'] ?></strong></span>
+                <span>معرّف الاختبار: <strong>#<?= (int)$p['id'] ?></strong></span>
+              </div>
+
+              <div class="quiz-actions">
+                <a class="quiz-button" href="admin_project_answers.php?id=<?= (int)$p['id'] ?>">
+                  مشاهدة الأجوبة
+                </a>
+              </div>
+            </article>
+          <?php endwhile; ?>
+        </div>
+      <?php else: ?>
+        <p class="no-quizzes">لا توجد اختبارات حتى الآن.</p>
+      <?php endif; ?>
+
         <div id="cards-box"></div>
       </div>
     </div>
