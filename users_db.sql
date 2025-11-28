@@ -42,6 +42,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
 (1, 'ali', 'aa@gam.com', '$2y$10$j9p3PZcuXEnVVBNNzkiL9.tcqnQ3LFLpHQtikw7swvuw5A3.xX1DG', 'user'),
 (2, 'sead', 's@gmail.com', '$2y$10$Mb0i7.0sBrC.msiXzLisouLMH0Dpfl7kvbDA3UAXnq7YiB/gJGhVe', 'user'),
+(5, 'Baraa', 'broo607sa@gmail.com', 'B1234567m', 'admin'),
 (4, 'SS', 'SS@gmail.com', '$2y$10$F.Jlt4O5FFKuPsVpsLzgzuwEDrZllFysOcW3XD8HD1nm6Et23g352', 'admin');
 
 --
