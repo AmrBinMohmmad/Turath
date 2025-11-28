@@ -99,7 +99,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
                 
             </select>
         
-        <button class="button" type="submit">إنشاء الاختبار</button>
+        <button class="view-btn" type="submit">إنشاء الاختبار</button>
         <a class="button secondary" href="admin_page.php" style="text-align:center; display:block; margin-top:10px; background:#ccc;">إلغاء</a>
     </form>
     </div>
