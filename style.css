@@ -1096,6 +1096,191 @@ footer {
   background: #16a34a;
   transform: translateY(-2px);
 }
+/* ===== صفحة حل الاختبار (answer_project) ===== */
+
+.quiz-page {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 16px 30px;
+}
+
+.question-card {
+  width: 100%;
+  max-width: 900px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.14);
+  padding: 24px 26px 26px;
+}
+
+.question-header {
+  margin-bottom: 18px;
+}
+
+.question-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.question-number span {
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+.question-progress-text span {
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+.question-progress-bar {
+  margin-top: 4px;
+}
+
+.question-text-main {
+  font-size: 16px;
+  color: #0f172a;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  cursor: pointer;
+  transition: background .2s ease, box-shadow .2s ease, border-color .2s ease, transform .15s ease;
+}
+
+.quiz-option:hover {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  box-shadow: 0 8px 20px rgba(148, 163, 184, 0.35);
+  transform: translateY(-2px);
+}
+
+.quiz-option input[type="radio"] {
+  accent-color: #3b82f6;
+  transform: scale(1.05);
+}
+
+.quiz-option .option-text {
+  font-size: 14px;
+  color: #111827;
+}
+
+.quiz-option input[type="radio"]:checked + .option-text {
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
+.no-options-hint {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.manual-answer-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 14px;
+  outline: none;
+}
+
+.manual-answer-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+.quiz-actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.quiz-exit-btn {
+  background: #e5e7eb;
+  color: #374151;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background .2s ease, transform .15s ease, box-shadow .2s ease;
+}
+
+.quiz-exit-btn:hover {
+  background: #cbd5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(148,163,184,0.45);
+}
+
+/* زر الاختبار نفسه – يكمل على الموجود عندك */
+.quiz-button {
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+  transition: .25s ease;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
+  text-decoration: none;
+}
+
+.quiz-button:hover {
+  background: linear-gradient(90deg, #1d4ed8, #1e40af);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(30, 64, 175, 0.45);
+}
+
+.quiz-button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(30, 64, 175, 0.25);
+}
+
+@media (max-width: 768px) {
+  .quiz-page {
+    padding: 24px 10px 20px;
+  }
+  .question-card {
+    padding: 18px 16px 20px;
+  }
+  .quiz-actions-row {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .quiz-exit-btn,
+  .quiz-button {
+    width: 100%;
+    text-align: center;
+  }
+}
 
 
 
