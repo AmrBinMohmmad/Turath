@@ -47,7 +47,6 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
         <a href="create_project.php" class="quiz-button" style="margin-top:10px;">
           إنشاء اختبار جديد
         </a>
-      </header>
       
         <input type="text" id="search" placeholder="ابحث باسم الاختبار..." oninput="loadCards()"
           style="width: 100%; padding: 10px; margin: 10px 0;">
