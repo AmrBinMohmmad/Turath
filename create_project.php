@@ -82,16 +82,16 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 <main class="types-wrapper">
   <div class="admin-wrapper">
       
-    <h2>Create New Project</h2>
+    <h2>إنشاء اختبار جديد</h2>
     <form method="post" class="card">
-        <label>Project Name:<br><input type="text" name="card_name" required></label><br><br>
-        <label>Number of Users:<br><input type="number" name="number_of_users" min="1" required></label><br><br>
-        <label>Number of Questions:<br><input type="number" name="number_of_question" min="1" required></label><br><br>
+        <label>اسم الاختبار:<br><input type="text" name="card_name" required></label><br><br>
+        <label>عدد المستخدمين:<br><input type="number" name="number_of_users" min="1" required></label><br><br>
+        <label>عدد الأسئلة:<br><input type="number" name="number_of_question" min="1" required></label><br><br>
     
-        <label>Dialect Type (Filter Questions):</label>
+        <label>نوع اللهجة (تصفية الأسئلة):</label>
             <select name="dialect_type" required>
-                <option value="" disabled selected>-- Select Dialect --</option>
-                <option value="all">Mixed (Random from all)</option>
+                <option value="" disabled selected>-- اختر اللهجة --</option>
+                <option value="all">مختلط (عشوائي من الجميع)</option>
                 
                 <?php foreach($unique_dialects as $dialect): ?>
                     <option value="<?= e($dialect) ?>"><?= e($dialect) ?></option>
@@ -99,8 +99,8 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
                 
             </select>
         
-        <button class="button" type="submit">Create Project</button>
-        <a class="button secondary" href="admin_page.php" style="text-align:center; display:block; margin-top:10px; background:#ccc;">Cancel</a>
+        <button class="button" type="submit">إنشاء الاختبار</button>
+        <a class="button secondary" href="admin_page.php" style="text-align:center; display:block; margin-top:10px; background:#ccc;">إلغاء</a>
     </form>
     </div>
 </main>
