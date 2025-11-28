@@ -56,34 +56,55 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<title>Create Project</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>إنشاء اختبار| لهجتنا</title>
+  <link rel="icon" type="image/png" href="Favicon.png">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="container">
-<h2>Create New Project</h2>
-<form method="post" class="card">
-    <label>Project Name:<br><input type="text" name="card_name" required></label><br><br>
-    <label>Number of Users:<br><input type="number" name="number_of_users" min="1" required></label><br><br>
-    <label>Number of Questions:<br><input type="number" name="number_of_question" min="1" required></label><br><br>
-
-    <label>Dialect Type (Filter Questions):</label>
-        <select name="dialect_type" required>
-            <option value="" disabled selected>-- Select Dialect --</option>
-            <option value="all">Mixed (Random from all)</option>
-            
-            <?php foreach($unique_dialects as $dialect): ?>
-                <option value="<?= e($dialect) ?>"><?= e($dialect) ?></option>
-            <?php endforeach; ?>
-            
-        </select>
     
-    <button class="button" type="submit">Create Project</button>
-    <a class="button secondary" href="admin_page.php" style="text-align:center; display:block; margin-top:10px; background:#ccc;">Cancel</a>
-</form>
-</div>
+<body>
+<header class="navbar">
+  <a href="index.html" class="logo" style="text-decoration:none;">
+    <img src="Favicon.png" alt="logo">
+    <div class="logo-text">
+      <h1 class="site-title">لهجتنا</h1>
+      <p class="site-tagline">اختبر معرفتك بثقافة وتراث مناطق المملكة</p>
+    </div>
+  </a>
+   <nav>
+    <a href="logout.php">تسجيل الخروج</a>
+  </nav>
+
+<main class="types-wrapper">
+
+<div class="container">
+    <h2>Create New Project</h2>
+    <form method="post" class="card">
+        <label>Project Name:<br><input type="text" name="card_name" required></label><br><br>
+        <label>Number of Users:<br><input type="number" name="number_of_users" min="1" required></label><br><br>
+        <label>Number of Questions:<br><input type="number" name="number_of_question" min="1" required></label><br><br>
+    
+        <label>Dialect Type (Filter Questions):</label>
+            <select name="dialect_type" required>
+                <option value="" disabled selected>-- Select Dialect --</option>
+                <option value="all">Mixed (Random from all)</option>
+                
+                <?php foreach($unique_dialects as $dialect): ?>
+                    <option value="<?= e($dialect) ?>"><?= e($dialect) ?></option>
+                <?php endforeach; ?>
+                
+            </select>
+        
+        <button class="button" type="submit">Create Project</button>
+        <a class="button secondary" href="admin_page.php" style="text-align:center; display:block; margin-top:10px; background:#ccc;">Cancel</a>
+    </form>
+    </div>
+
+<footer>
+  <p>© 2025 لهجتنا</p>
+</footer>
 </body>
 </html>
