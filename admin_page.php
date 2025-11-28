@@ -1,7 +1,6 @@
 <?php
-require_once 'auth.php';
-require_admin();
-?>
+require "config2.php";
+session_start();
 
 // demo admin
 $admin = ['id'=>1,'name'=>'Admin Demo'];
