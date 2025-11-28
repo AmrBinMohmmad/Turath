@@ -78,9 +78,9 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
     <a href="logout.php">تسجيل الخروج</a>
   </nav>
 
-<main class="types-wrapper">
+<main class="hero">
 
-  <div class="admin-wrapper">
+  <div class="hero-content">
     <h2>Create New Project</h2>
     <form method="post" class="card">
         <label>Project Name:<br><input type="text" name="card_name" required></label><br><br>
