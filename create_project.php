@@ -77,6 +77,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
    <nav>
     <a href="logout.php">تسجيل الخروج</a>
   </nav>
+  </header>
 
 <main class="hero">
 
