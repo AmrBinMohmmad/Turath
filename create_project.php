@@ -79,9 +79,9 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
   </nav>
   </header>
 
-<main class="hero">
-
-  <div class="hero-content">
+<main class="types-wrapper">
+  <div class="admin-wrapper">
+      
     <h2>Create New Project</h2>
     <form method="post" class="card">
         <label>Project Name:<br><input type="text" name="card_name" required></label><br><br>
