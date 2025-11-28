@@ -88,7 +88,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
         <label>عدد المستخدمين:<br><input type="number" name="number_of_users" min="1" required></label><br><br>
         <label>عدد الأسئلة:<br><input type="number" name="number_of_question" min="1" required></label><br><br>
     
-        <label>نوع اللهجة :</label>
+        <label>نوع اللهجة:</label>
             <select name="dialect_type" required>
                 <option value="" disabled selected>-- اختر اللهجة --</option>
                 <option value="all">مختلط (عشوائي من الجميع)</option>
@@ -100,7 +100,7 @@ if($_SERVER['REQUEST_METHOD']==='POST'){
             </select>
         
         <button class="view-btn" type="submit">إنشاء الاختبار</button>
-        <a class="button secondary" href="admin_page.php" style="text-align:center; display:block; margin-top:10px; background:#ccc;">إلغاء</a>
+        <a class="button secondary" href="admin_page.php" style="text-align:center; border-radius: 8px; display:block; margin-top:10px; background:#ccc;">إلغاء</a>
     </form>
     </div>
 </main>
