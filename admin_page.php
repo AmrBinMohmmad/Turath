@@ -81,6 +81,19 @@ $projects = $conn->query("SELECT * FROM cards ORDER BY id DESC");
       <?php else: ?>
         <p class="no-quizzes">لا توجد اختبارات حتى الآن.</p>
       <?php endif; ?>
+        <select id="filter-region" onchange="loadCards()" style="width: 100%; padding: 10px; margin-bottom: 15px;">
+          <option value="" disabled selected>-- Select Dialect --</option>
+            <option value="all">Mixed (Random from all)</option>
+            <option value="General">General</option>
+            <option value="Southern">Southern</option>
+            <option value="Central">Central</option>
+            <option value="Eastern">Eastern</option>
+            <option value="Northern">Northern</option>
+            <option value="Western">Western</option>
+                  </select>
+
+       <div id="cards-box"></div>
+      </div>
     </section>
   </main>
 
