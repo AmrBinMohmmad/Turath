@@ -18,62 +18,70 @@ function isActiveForm($formName, $activeForm){
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome | Data Annotation</title>
+  <title>تسجيل / دخول | لهجتنا</title>
   <link rel="stylesheet" href="../css/style.css">
   <link rel="icon" type="image/png" href="../assets/images/Favicon.png">
 </head>
+
 <body>
-  <header class="navbar">
-  <a href="../../index.html" class="logo">
-    <img src="../assets/images/Favicon.png" alt="Logo">
-     <h1>Data Annotation</h1>
-    </div>
-    <nav>
-      <a href="../../index.html">الرئيسية</a>
 
-      <span class="auth-links">
-        <a href="signup.php?form=register">تسجيل</a>
-        <span class="divider">/</span>
-        <a href="signup.php?form=login">دخول</a>
-      </span>
+<header class="navbar">
+  <a href="../../index.html" class="logo" style="text-decoration:none;">
+    <img src="../assets/images/Favicon.png" alt="شعار لهجتنا">
+    <h1>لهجتنا</h1>
+  </a>
 
-      <a href="about.html">عن الموقع</a>
-      <a href="contact.html">تواصل معنا</a>
-    </nav>
-  </header>
+  <nav>
+    <a href="../../index.html">الرئيسية</a>
 
-  <div class="container">
-    <div class="form_box <?= isActiveForm('login',$activeForm); ?>" id="login-form">
-      <form action="login_register.php" method="post">
-        <h2>Login</h2>
-        <?= showError($errors['login']); ?>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit" name="login">Login</button>
-        <p>Don't have an account? <a onclick="showForm('register-form')">Register</a></p>
-      </form>
-    </div>
+    <span class="auth-links">
+      <a href="signup.php?form=register">تسجيل</a>
+      <span class="divider">/</span>
+      <a href="signup.php?form=login">دخول</a>
+    </span>
 
-    <div class="form_box <?= isActiveForm('register',$activeForm); ?>" id="register-form">
-      <form action="login_register.php" method="post">
-        <h2>Register</h2>
-        <?= showError($errors['register']); ?>
-        <input type="text" name="name" placeholder="Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <button type="submit" name="register">Register</button>
-        <p>Already have an account? <a onclick="showForm('login-form')">Login</a></p>
-      </form>
-    </div>
+    <a href="about.html">عن الموقع</a>
+    <a href="contact.html">تواصل معنا</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <!-- نموذج تسجيل الدخول -->
+  <div class="form_box <?= isActiveForm('login',$activeForm); ?>" id="login-form">
+    <form action="login_register.php" method="post">
+      <h2>تسجيل الدخول</h2>
+      <?= showError($errors['login']); ?>
+      <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+      <input type="password" name="password" placeholder="كلمة المرور" required>
+      <button type="submit" name="login">دخول</button>
+      <p>ليس لديك حساب؟ <a href="signup.php?form=register">إنشاء حساب</a></p>
+    </form>
   </div>
 
-  <footer>
-    <p>© 2025 Data Annotation</p>
-  </footer>
-  <script src="../js/script.js"></script>
+  <!-- نموذج إنشاء حساب -->
+  <div class="form_box <?= isActiveForm('register',$activeForm); ?>" id="register-form">
+    <form action="login_register.php" method="post">
+      <h2>إنشاء حساب</h2>
+      <?= showError($errors['register']); ?>
+      <input type="text" name="name" placeholder="الاسم" required>
+      <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+      <input type="password" name="password" placeholder="كلمة المرور" required>
+      <button type="submit" name="register">تسجيل</button>
+      <p>لديك حساب؟ <a href="signup.php?form=login">تسجيل الدخول</a></p>
+    </form>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2025 لهجتنا</p>
+</footer>
+
+<script src="../js/script.js"></script>
 </body>
 </html>
