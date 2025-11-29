@@ -1,12 +1,12 @@
 <?php
 
-$host="localhost";
+$host="sql204.infinityfree.com";
 
-$user="root";
+$user="if0_40419506";
 
-$password="";
+$password="Abmw123456789";
 
-$database="users_db";
+$database="if0_40419506_users_db";
 
 
 
