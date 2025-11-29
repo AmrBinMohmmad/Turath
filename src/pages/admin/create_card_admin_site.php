@@ -2,13 +2,13 @@
 
 session_start();
 
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "projects";
+$host = "sql204.infinityfree.com";
+$user = "if0_40419506";
+$password = "Abmw123456789";
+$database = "if0_40419506_projects";
 
 $conn = new mysqli($host, $user, $password, $database);
-$conn_qs_bd = new mysqli("localhost", "root", "", "questions_db");
+$conn_qs_bd = new mysqli("sql204.infinityfree.com", "if0_40419506", "Abmw123456789", "if0_40419506_questions_db");
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -151,6 +151,7 @@ function getThreePositiveNumbers($total)
 
     return [$a, $b, $c];
 }
+
 
 
 
