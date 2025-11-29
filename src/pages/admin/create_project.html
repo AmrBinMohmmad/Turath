@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Create Project</title>
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<div class="container">
+<h2>Create New Project</h2><br><br>
+<form method="post" class="card" action="create_card_admin_site.php">
+    <label>Project Name:<br><input type="text" name="card_name" required></label><br><br>
+    <label>Number of Users:<br><input type="number" name="number_of_users" min="1" max="30" required></label><br><br>
+    <label>Number of Questions:<br><input type="number" name="number_of_question" min="20" max="500" required></label><br><br>
+
+    <label>Dialect Type (Filter Questions):</label>
+        <select name="dialect_type" required>
+            <option value="" disabled selected>-- Select Dialect --</option>
+            <option value="all">Mixed (Random from all)</option>
+            <option value="General">General</option>
+            <option value="Southern">Southern</option>
+            <option value="Central">Central</option>
+            <option value="Eastern">Eastern</option>
+            <option value="Northern">Northern</option>
+            <option value="Western">Western</option>
+        </select>
+    
+    <button class="button" name="create_card" type="submit">Create Project</button>
+    <a class="button secondary" href="admin_page.php" style="text-align:center; display:block; margin-top:10px; background:#ccc;">Cancel</a>
+</form>
+</div>
+</body>
+</html>
