@@ -1,4 +1,10 @@
 <?php
+ini_set('display_errors', 1);
+
+ini_set('display_startup_errors', 1);
+
+error_reporting(E_ALL);
+
 session_start();
 
 // يجب التأكد من أن هذه البيانات صحيحة للاتصال بقاعدة البيانات الخاصة بالأسئلة
@@ -298,4 +304,5 @@ body { font-family: Tahoma, sans-serif; background:#f5f5f5; direction:rtl; }
 </div>
 </body>
 </html>
+
 
