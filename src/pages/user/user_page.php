@@ -28,7 +28,7 @@ $user_name = $_SESSION['name'] ?? 'ضيف';
 <body>
 
   <header class="navbar">
-    <a href="../index.html" class="logo" style="text-decoration: none;">
+    <a href="../../../index.html" class="logo" style="text-decoration: none;">
       <img src="../../assets/images/Favicon.png" alt="شعار لهجتنا">
       <div class="logo-text">
         <h1 class="site-title">لهجتنا</h1>
@@ -37,8 +37,7 @@ $user_name = $_SESSION['name'] ?? 'ضيف';
     </a>
 
     <nav>
-      <span>مرحباً بك، <?= htmlspecialchars($user_name) ?></span>
-      <a href="user_answers.php" class="button">إجاباتي</a>
+      <span>مرحباً بك، <?= htmlspecialchars($user_name) ?></span
       <a href="../../auth/logout.php">تسجيل الخروج</a>
     </nav>
   </header>
