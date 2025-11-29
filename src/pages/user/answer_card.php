@@ -46,6 +46,7 @@ function parse_question_text($text)
 
         } elseif (str_starts_with($line, "الإجابة الصحيحة:")) {
             $current = "answer";
+            // هنا نضمن أننا نأخذ المفتاح فقط (A أو أ) ونزيل أي مسافات زائدة
             $answer = trim(str_replace("الإجابة الصحيحة:", "", $line));
 
         } else {
@@ -64,7 +65,7 @@ function parse_question_text($text)
         "mission"  => $mission,
         "question" => $question,
         "options"  => $options,
-        "answer"   => $answer
+        "answer"   => $answer // الإجابة الصحيحة ستكون مفتاح الحرف (A, B, C, ... أو أ, ب, ج, ...)
     ];
 }
 
@@ -177,24 +178,43 @@ if ($q_index >= $total_q) {
 // -------------------------------------------------------------------
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed) {
     
-    $user_answer = $_POST['answer'] ?? '';
+    // جلب بيانات السؤال الحالي قبل الانتقال
+    $current_question_data = $all_questions[$q_index];
+    
+    // القيمة المرسلة من النموذج هي المفتاح (A، B، C، ... أو أ، ب، ج، ...)
+    $user_answer_key = trim($_POST['answer'] ?? '');
+    
+    // الإجابة الصحيحة كحرف (A, B, C, ... أو أ, ب, ج, ...)
+    $correct_answer_key = trim($current_question_data['answer']); 
+    
+    // -------------------------------------------------------------------
+    // مقارنة الإجابات وحساب النتيجة (Score)
+    // -------------------------------------------------------------------
+    $score = 0; // 0 = إجابة خاطئة
+    
+    // المقارنة الحساسة لحالة الأحرف:
+    // إذا كانت الإجابة الصحيحة هي 'A' واختار المستخدم 'a'، فإن المقارنة ستفشل، وهذا هو المطلوب.
+    if ($user_answer_key === $correct_answer_key) {
+        $score = 1; // 1 = إجابة صحيحة
+    }
+    
+    // القيمة التي سيتم تخزينها في قاعدة البيانات هي الحرف الذي اختاره المستخدم (كما هو)
+    $user_answer_to_store = $user_answer_key;
     
     // تحديد الـ ID الأساسي للسؤال الذي تمت الإجابة عليه
     // الـ ID الأساسي هو $q_data[$q_index]['qid']
     $base_question_id = $q_data[$q_index]['qid'];
     
-    // **ملاحظة هامة:** يجب أن يكون question_id في جدول annotations فريداً لكل سؤال.
-    // بما أننا نستخدم الـ ID الأساسي، يجب أن نضمن أن الـ question_id يعكس الـ ID الأساسي ونوع السؤال (1-6).
-    // لتبسيط الأمر، سنستخدم الـ ID الأساسي كـ question_id مؤقت، مع العلم أن هذا قد يسبب مشاكل إذا أردت تتبع الإجابة على كل سؤال من الـ 6 أسئلة بشكل منفصل.
-    
     $actual_question_id = $base_question_id; 
     
-    // إدخال الإجابة في جدول annotations
+    // إدخال الإجابة والنتيجة في جدول annotations
+    // **ملاحظة:** عمود 'answer' يجب أن يكون من نوع STRING (VARCHAR)
     $stmt = $conn->prepare("
-        INSERT INTO projects.annotations (user_id, question_id, project_id, answer) 
-        VALUES (?, ?, ?, ?)
+        INSERT INTO projects.annotations (user_id, question_id, project_id, answer, score) 
+        VALUES (?, ?, ?, ?, ?)
     ");
-    $stmt->bind_param("iiis", $user_id, $actual_question_id, $project_id, $user_answer);
+    // نستخدم 's' لـ $user_answer_to_store (الحرف) و 'i' لـ $score (الرقم)
+    $stmt->bind_param("iiisi", $user_id, $actual_question_id, $project_id, $user_answer_to_store, $score);
     $stmt->execute();
     $stmt->close();
 
@@ -231,7 +251,7 @@ body { font-family: Tahoma, sans-serif; background:#f5f5f5; direction:rtl; }
 <body>
 <div class="container">
 <div class="card">
-    <h3>السؤال <?= $q_index ?> / <?= $total_q ?></h3>
+    <h3>السؤال <?= $q_index + 1 ?> / <?= $total_q ?></h3>
     <div class="small">التقدم: <?= $progress ?>%</div>
     <div class="progress-bar"><div class="progress-fill" style="width:<?= $progress ?>%;"></div></div>
     <hr>
