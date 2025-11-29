@@ -1095,3 +1095,42 @@ footer {
   background: #16a34a;
   transform: translateY(-2px);
 }
+/* زر التبديل */
+.theme-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #1e3a8a;
+  transition: .3s ease;
+}
+
+.theme-btn:hover {
+  transform: scale(1.2);
+}
+
+/* وضع الليل */
+.dark-mode {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+}
+
+.dark-mode .navbar,
+.dark-mode footer,
+.dark-mode .contact-card,
+.dark-mode .project-card,
+.dark-mode .quiz-card,
+.dark-mode .card,
+.dark-mode .admin-wrapper {
+  background: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+
+.dark-mode a {
+  color: #93c5fd !important;
+}
+
+.dark-mode .progress-bar {
+  background: #475569 !important;
+}
