@@ -23,32 +23,32 @@ function isActiveForm($formName, $activeForm){
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome | Data Annotation</title>
-  <link rel="stylesheet" href="../src/css/style.css">
-  <link rel="icon" type="image/png" href="../src/assets/images/Favicon.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/png" href="../assets/images/Favicon.png">
 </head>
 <body>
   <header class="navbar">
-  <a href="index.html" class="logo">
+  <a href="../../index.html" class="logo">
     <img src="../assets/images/Favicon.png" alt="Logo">
      <h1>Data Annotation</h1>
     </div>
     <nav>
-      <a href="index.html">الرئيسية</a>
+      <a href="../../index.html">الرئيسية</a>
 
       <span class="auth-links">
-        <a href="src/pages/signup.php?form=register">تسجيل</a>
+        <a href="signup.php?form=register">تسجيل</a>
         <span class="divider">/</span>
-        <a href="src/pages/signup.php?form=login">دخول</a>
+        <a href="signup.php?form=login">دخول</a>
       </span>
 
-      <a href="src/pages/about.html">عن الموقع</a>
-      <a href="src/pages/contact.html">تواصل معنا</a>
+      <a href="about.html">عن الموقع</a>
+      <a href="contact.html">تواصل معنا</a>
     </nav>
   </header>
 
   <div class="container">
     <div class="form_box <?= isActiveForm('login',$activeForm); ?>" id="login-form">
-      <form action="src/pages/login_register.php" method="post">
+      <form action="login_register.php" method="post">
         <h2>Login</h2>
         <?= showError($errors['login']); ?>
         <input type="email" name="email" placeholder="Email" required>
@@ -59,7 +59,7 @@ function isActiveForm($formName, $activeForm){
     </div>
 
     <div class="form_box <?= isActiveForm('register',$activeForm); ?>" id="register-form">
-      <form action="src/pages/login_register.php" method="post">
+      <form action="login_register.php" method="post">
         <h2>Register</h2>
         <?= showError($errors['register']); ?>
         <input type="text" name="name" placeholder="Name" required>
@@ -74,6 +74,6 @@ function isActiveForm($formName, $activeForm){
   <footer>
     <p>© 2025 Data Annotation</p>
   </footer>
-  <script src="../src/js/script.js"></script>
+  <script src="../js/script.js"></script>
 </body>
 </html>
