@@ -16,7 +16,7 @@ require_admin();
 
 <body>
   <header class="navbar">
-    <a href="index.html" class="logo" style="text-decoration: none;">
+    <a href="../../../index.html" class="logo" style="text-decoration: none;">
       <img src="../../assets/images/Favicon.png" alt="شعار لهجتنا">
       <div class="logo-text">
         <h1 class="site-title">لهجتنا</h1>
