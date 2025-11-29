@@ -37,7 +37,7 @@ $user_name = $_SESSION['name'] ?? 'ضيف';
     </a>
 
     <nav>
-      <span>مرحباً بك، <?= htmlspecialchars($user_name) ?></span
+      <span>مرحباً بك، <?= htmlspecialchars($user_name) ?></span>
       <a href="../../auth/logout.php">تسجيل الخروج</a>
     </nav>
   </header>
