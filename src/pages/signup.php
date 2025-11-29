@@ -46,6 +46,8 @@ function isActiveForm($formName, $activeForm){
 
     <a href="about.html">عن الموقع</a>
     <a href="contact.html">تواصل معنا</a>
+    <button id="theme-toggle" class="theme-btn">🌙</button>
+
   </nav>
 </header>
 
