@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once '../config/config.php';
+require_once '../src/config/config.php';
 
 
 
@@ -17,13 +17,13 @@ if (isset($_POST['register'])) {
     if ($checkEmail->num_rows > 0) {
         $_SESSION['register_error'] = "Email is already registered!";
         $_SESSION['active_form'] = "register";
-        header("Location: signup.php");
+        header("Location: src/pages/signup.php");
         exit();
     } else {
         $conn->query("INSERT INTO users (name,email,password,role) VALUES ('$name','$email','$password','$role')");
         $_SESSION['active_form'] = "login";
     }
-    header("Location: signup.php");
+    header("Location: src/pages/signup.php");
     exit();
 }
 
@@ -44,9 +44,9 @@ if (isset($_POST['login'])) {
             $_SESSION['role'] = $user['role'];
 
             if ($user['role'] === 'admin') {
-                header("Location: ../pages/admin/admin_page.php");
+                header("Location: ../src/pages/admin/admin_page.php");
             } else {
-                header("Location:../pages/user/user_page.php");
+                header("Location:../src/pages/user/user_page.php");
             }
             exit();
 
@@ -57,4 +57,5 @@ if (isset($_POST['login'])) {
     $_SESSION['active_form'] = "login";
     header("Location: signup.php");
     exit();
+
 }
