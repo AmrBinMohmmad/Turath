@@ -33,6 +33,7 @@ function isActiveForm($formName, $activeForm){
   <a href="../../index.html" class="logo" style="text-decoration:none;">
     <img src="../assets/images/Favicon.png" alt="شعار لهجتنا">
     <h1>لهجتنا</h1>
+    <p class="site-tagline">اختبر معرفتك بثقافة وتراث مناطق المملكة</p>
   </a>
 
   <nav>
