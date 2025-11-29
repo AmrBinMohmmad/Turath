@@ -2,10 +2,10 @@
 session_start();
 
 // يجب التأكد من أن هذه البيانات صحيحة للاتصال بقاعدة البيانات الخاصة بالأسئلة
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "questions_db"; // قاعدة البيانات التي تحتوي على جداول الأسئلة (phrases_db, words_db, proverbs_db)
+$host = "sql204.infinityfree.com";
+$user = "if0_40419506";
+$password = "Abmw123456789";
+$database = "if0_40419506_questions_db"; // قاعدة البيانات التي تحتوي على جداول الأسئلة (phrases_db, words_db, proverbs_db)
 
 $project_id = intval($_GET['id'] ?? 0);
 
@@ -298,3 +298,4 @@ body { font-family: Tahoma, sans-serif; background:#f5f5f5; direction:rtl; }
 </div>
 </body>
 </html>
+
