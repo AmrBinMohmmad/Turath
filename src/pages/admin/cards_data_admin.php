@@ -1,9 +1,9 @@
 <?php
 
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "projects";
+$host = "sql204.infinityfree.com";
+$user = "if0_40419506";
+$password = "Abmw123456789";
+$database = "if0_40419506_projects";
 
 $conn = new mysqli($host, $user, $password, $database);
 if ($conn->connect_error) {
@@ -62,5 +62,6 @@ while ($p = $result->fetch_assoc()):
         </div>
 
 <?php endwhile; ?>
+
 
 
