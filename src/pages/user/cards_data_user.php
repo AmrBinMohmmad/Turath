@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-$host = "localhost";
-$user = "root";
-$password = "";
-$database = "projects"; // قاعدة بيانات المشاريع
+$host = "sql204.infinityfree.com";
+$user = "if0_40419506";
+$password = "Abmw123456789";
+$database = "if0_40419506_projects"; // قاعدة بيانات المشاريع
 
 $conn = new mysqli($host, $user, $password, $database);
 if ($conn->connect_error) {
@@ -206,3 +206,4 @@ while ($p = $result->fetch_assoc()):
     pointer-events: none;
 }
 </style>
+
