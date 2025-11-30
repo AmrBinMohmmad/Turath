@@ -2,14 +2,14 @@
 require_once __DIR__ . '/../../auth/auth.php';
 require_admin();
 
-$host = "localhost";
-$user = "root";
-$password = "";
+$host = "sql204.infinityfree.com";
+$user = "if0_40419506";
+$password = "Abmw123456789";
 
 // Database names
-$projects_db_name = "projects";
-$users_db_name = "users_db";
-$questions_db_name = "questions_db";
+$projects_db_name = "if0_40419506_projects";
+$users_db_name = "if0_40419506_users_db";
+$questions_db_name = "if0_40419506_questions_db";
 
 // Establish connections
 $conn_projects = new mysqli($host, $user, $password, $projects_db_name);
@@ -225,4 +225,5 @@ function parse_question_text($text) {
     <p>© 2025 لهجتنا</p>
   </footer>
 </body>
+
 </html>
