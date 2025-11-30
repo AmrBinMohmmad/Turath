@@ -41,7 +41,7 @@ $user_name = $user_name_query->fetch_assoc()['name'] ?? 'Unknown User';
 $table_map = [1 => "words_db", 2 => "phrases_db", 3 => "proverbs_db"];
 $question_columns = ["Location_Recognition_question", "Cultural_Interpretation_question", "Contextual_Usage_question", "Fill_in_Blank_question", "True_False_question", "Meaning_question"];
 
-$q_ids_result = $conn_projects->query("SELECT number_of_q, type_of_q FROM projects.cards_questions WHERE card_id = $project_id AND number_of_q IS NOT NULL");
+$q_ids_result = $conn_projects->query("SELECT number_of_q, type_of_q FROM cards_questions WHERE card_id = $project_id AND number_of_q IS NOT NULL");
 $all_questions_data = [];
 $question_index = 0;
 
@@ -234,4 +234,5 @@ function parse_question_text($text) {
 </body>
 
 </html>
+
 
