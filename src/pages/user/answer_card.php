@@ -212,7 +212,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed) {
     $base_question_id = $q_data[$q_index]['qid'];
     
     $stmt = $conn->prepare("
-        INSERT INTO projects.annotations (user_id, question_id, project_id, answer, score) 
+        INSERT INTO if0_40419506_projects.annotations (user_id, question_id, project_id, answer, score) 
         VALUES (?, ?, ?, ?, ?)
     ");
     $stmt->bind_param("iiisi", $user_id, $base_question_id, $project_id, $user_answer_key, $score);
@@ -300,6 +300,7 @@ body { font-family: Tahoma, sans-serif; background:#f5f5f5; direction:rtl; }
 </div>
 </body>
 </html>
+
 
 
 
