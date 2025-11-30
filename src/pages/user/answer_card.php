@@ -14,55 +14,89 @@ $password = "Abmw123456789";
 $database = "if0_40419506_questions_db"; // قاعدة البيانات التي تحتوي على جداول الأسئلة (phrases_db, words_db, proverbs_db)
 
 $project_id = intval($_GET['id'] ?? 0);
-
-// يجب أن يكون لديك طريقة لمعرفة هوية المستخدم الحالي.
-// سنفترض أن هوية المستخدم مخزنة في $_SESSION['user_id']
-// إذا لم يكن لديك نظام تسجيل دخول، يجب عليك إضافة واحد.
-$user_id = $_SESSION['user_id'] ?? 1; // استخدام 1 كقيمة افتراضية إذا لم يكن هناك نظام تسجيل دخول
+$user_id = $_SESSION['user_id'] ?? 1;
 
 $conn = new mysqli($host, $user, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// دالة لتأمين المخرجات
 function e($string) {
     return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 }
 
+/**
+ * دالة تحليل النص المحسنة
+ * تعالج اختلاف اللغات بين الإجابة والخيارات (A -> أ)
+ */
 function parse_question_text($text)
 {
-    $lines = explode("\n", $text);
-    $mission = $question = $answer = "";
+    // 1. تنظيف النص
+    $text = str_replace('*', '', $text);
+    $text = trim($text);
+
+    $mission = "";
+    $question = "";
     $options = [];
-    $current = "";
+    $answer = "";
 
-    foreach ($lines as $line) {
-        $line = trim($line);
+    // 2. استخراج "المهمة"
+    if (preg_match('/المهمة\s*:\s*(.*?)\s*(?=السؤال)/usi', $text, $m)) {
+        $mission = trim($m[1]);
+    }
 
-        if (str_starts_with($line, "المهمة:")) {
-            $current = "mission";
-            $mission = trim(str_replace("المهمة:", "", $line));
+    // 3. استخراج "السؤال"
+    if (preg_match('/السؤال\s*:\s*(.*?)\s*(?=الخيارات)/usi', $text, $m)) {
+        $question = trim($m[1]);
+    }
 
-        } elseif (str_starts_with($line, "السؤال:")) {
-            $current = "question";
-            $question = trim(str_replace("السؤال:", "", $line));
+    // 4. استخراج "الخيارات"
+    $optionsBlock = "";
+    if (preg_match('/الخيارات\s*:\s*(.*?)\s*(?=الإجابة|الجواب)/usi', $text, $m)) {
+        $optionsBlock = trim($m[1]);
+    }
 
-        } elseif (str_starts_with($line, "الخيارات:")) {
-            $current = "options";
+    if (!empty($optionsBlock)) {
+        $lines = preg_split('/\r\n|\r|\n/', $optionsBlock);
+        foreach ($lines as $line) {
+            $line = trim($line);
+            if (empty($line)) continue;
+            // استخراج المفتاح (أ، ب، A، B) والنص
+            if (preg_match('/^([A-Zأ-ي0-9]+)\s*[\)\.\-]\s*(.*)$/iu', $line, $optMatch)) {
+                $key = trim($optMatch[1]);
+                $val = trim($optMatch[2]);
+                $options[$key] = $val;
+            }
+        }
+    }
 
-        } elseif (str_starts_with($line, "الإجابة الصحيحة:")) {
-            $current = "answer";
-            // هنا نضمن أننا نأخذ المفتاح فقط (A أو أ) ونزيل أي مسافات زائدة
-            $answer = trim(str_replace("الإجابة الصحيحة:", "", $line));
-
+    // 5. استخراج "الإجابة الصحيحة" (الرمز فقط)
+    if (preg_match('/(?:الإجابة الصحيحة|الجواب الصحيح|الجواب)\s*:\s*(.*)/ui', $text, $m)) {
+        $rawAnswer = trim($m[1]);
+        // نأخذ الحرف الأول فقط (مثلاً من "B (خطأ)" نأخذ "B")
+        if (preg_match('/^([A-Zأ-ي0-9]+)/iu', $rawAnswer, $ansMatch)) {
+            $answer = mb_strtoupper(trim($ansMatch[1])); 
         } else {
-            if ($current === "options" && !empty($line)) {
-                $parts = explode(")", $line, 2);
-                if (count($parts) == 2) {
-                    $key = trim($parts[0]);
-                    $value = trim(trim($parts[1]));
-                    $options[$key] = $value;
-                }
+            $answer = $rawAnswer;
+        }
+    }
+
+    // ---------------------------------------------------------
+    // حل مشكلة اختلاف اللغة (A vs أ)
+    // ---------------------------------------------------------
+    if (!empty($options) && !empty($answer)) {
+        // إذا كانت الإجابة المستخرجة غير موجودة في مفاتيح الخيارات
+        if (!array_key_exists($answer, $options)) {
+            // خريطة التحويل
+            $map = [
+                'A' => 'أ', 'B' => 'ب', 'C' => 'ج', 'D' => 'د',
+                'أ' => 'A', 'ب' => 'B', 'ج' => 'C', 'د' => 'D'
+            ];
+            
+            // إذا كانت الإجابة قابلة للتحويل، والمقابل لها موجود في الخيارات
+            if (isset($map[$answer]) && array_key_exists($map[$answer], $options)) {
+                $answer = $map[$answer]; // تحويل B إلى ب
             }
         }
     }
@@ -71,11 +105,11 @@ function parse_question_text($text)
         "mission"  => $mission,
         "question" => $question,
         "options"  => $options,
-        "answer"   => $answer // الإجابة الصحيحة ستكون مفتاح الحرف (A, B, C, ... أو أ, ب, ج, ...)
+        "answer"   => $answer
     ];
 }
 
-// مصفوفة ربط type_of_q باسم الجدول
+// مصفوفة الجداول
 $table_map = [
     1 => "words_db",
     2 => "phrases_db",
@@ -91,15 +125,15 @@ $question_columns = [
     "Meaning_question"
 ];
 
-// جلب IDs الأسئلة ونوع الجدول من جدول cards_questions
+// جلب الأسئلة
 $q_ids_result = $conn->query("
     SELECT number_of_q, type_of_q 
-    FROM if0_40419506_projects.cards_questions
+    FROM projects.cards_questions
     WHERE card_id = $project_id AND number_of_q IS NOT NULL
 ");
 
 $all_questions = [];
-$q_data = []; // لتخزين الـ ID ونوع الجدول معاً
+$q_data = []; 
 
 while ($row = $q_ids_result->fetch_assoc()) {
     $q_data[] = [
@@ -112,130 +146,88 @@ if (count($q_data) == 0) {
     die("لا يوجد أسئلة مرتبطة بهذه البطاقة.");
 }
 
-// -------------------------------------------------------------------
-// منطق تجميع الأسئلة: اختيار عمود واحد بالتتابع لكل ID
-// -------------------------------------------------------------------
 $column_count = count($question_columns);
-$question_index = 0; // فهرس السؤال الكلي (من 0 إلى 19)
+$question_index = 0;
 
 foreach ($q_data as $item) {
     $qid = $item['qid'];
     $type = $item['type'];
-    
-    // تحديد اسم الجدول بناءً على type_of_q
     $table = $table_map[$type] ?? null;
 
     if ($table) {
-        // تحديد اسم العمود الذي سيتم اختياره بناءً على فهرس السؤال الكلي
-        // (question_index % column_count) يعطينا فهرس العمود (من 0 إلى 5)
         $col_index = $question_index % $column_count;
         $selected_column = $question_columns[$col_index];
         
-        // الاستعلام عن السؤال في الجدول الصحيح واختيار العمود المحدد فقط
         $q = $conn->query("SELECT $selected_column FROM $table WHERE id = $qid LIMIT 1");
 
         if ($q && $q->num_rows > 0) {
             $data = $q->fetch_assoc();
-
-            // إضافة السؤال المحدد فقط إلى مصفوفة الأسئلة
             if (!empty($data[$selected_column])) {
                 $all_questions[] = parse_question_text($data[$selected_column]);
             }
         }
     }
-    
-    // زيادة فهرس السؤال الكلي للانتقال للعمود التالي في التكرار القادم
     $question_index++;
 }
 
 $total_q = count($all_questions);
 if ($total_q == 0) {
-    die("لم يتم العثور على أي سؤال في الجداول الثلاثة.");
+    die("لم يتم العثور على أي سؤال صالح للعرض.");
 }
 
-// -------------------------------------------------------------------
-// 1. جلب الفهرس الحالي من جدول annotations
-// -------------------------------------------------------------------
+// جلب التقدم
 $stmt = $conn->prepare("
     SELECT COUNT(*) AS answered_count 
-    FROM if0_40419506_projects.annotations 
+    FROM projects.annotations 
     WHERE user_id = ? AND project_id = ?
 ");
 $stmt->bind_param("ii", $user_id, $project_id);
 $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
-$q_index = intval($row['answered_count']); // عدد الإجابات هو الفهرس التالي
+$q_index = intval($row['answered_count']);
 $stmt->close();
 
-// -------------------------------------------------------------------
-// 2. التحقق من الانتهاء من جميع الأسئلة
-// -------------------------------------------------------------------
 if ($q_index >= $total_q) {
-    // تم الانتهاء من جميع الأسئلة، قم بعرض رسالة الانتهاء ومنع عرض النموذج
     $is_completed = true;
-    $q_index = $total_q; // لضمان عرض 20/20
+    $q_index = $total_q;
 } else {
     $is_completed = false;
 }
 
-// -------------------------------------------------------------------
-// 3. حفظ الإجابة في جدول annotations عند الانتقال للسؤال التالي
-// -------------------------------------------------------------------
+// معالجة الإجابة
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed) {
     
-    // جلب بيانات السؤال الحالي قبل الانتقال
     $current_question_data = $all_questions[$q_index];
-    
-    // القيمة المرسلة من النموذج هي المفتاح (A، B، C، ... أو أ، ب، ج، ...)
     $user_answer_key = trim($_POST['answer'] ?? '');
     
-    // الإجابة الصحيحة كحرف (A, B, C, ... أو أ, ب, ج, ...)
+    // الإجابة الصحيحة الآن موحدة (إذا كانت الخيارات "ب"، فالإجابة ستكون "ب" حتى لو في الداتا B)
     $correct_answer_key = trim($current_question_data['answer']); 
     
-    // -------------------------------------------------------------------
-    // مقارنة الإجابات وحساب النتيجة (Score)
-    // -------------------------------------------------------------------
-    $score = 0; // 0 = إجابة خاطئة
-    
-    // المقارنة الحساسة لحالة الأحرف:
-    // إذا كانت الإجابة الصحيحة هي 'A' واختار المستخدم 'a'، فإن المقارنة ستفشل، وهذا هو المطلوب.
-    if ($user_answer_key === $correct_answer_key) {
-        $score = 1; // 1 = إجابة صحيحة
+    $score = 0;
+    if (strcasecmp($user_answer_key, $correct_answer_key) === 0) {
+        $score = 1;
     }
     
-    // القيمة التي سيتم تخزينها في قاعدة البيانات هي الحرف الذي اختاره المستخدم (كما هو)
-    $user_answer_to_store = $user_answer_key;
-    
-    // تحديد الـ ID الأساسي للسؤال الذي تمت الإجابة عليه
-    // الـ ID الأساسي هو $q_data[$q_index]['qid']
     $base_question_id = $q_data[$q_index]['qid'];
     
-    $actual_question_id = $base_question_id; 
-    
-    // إدخال الإجابة والنتيجة في جدول annotations
-    // **ملاحظة:** عمود 'answer' يجب أن يكون من نوع STRING (VARCHAR)
     $stmt = $conn->prepare("
-        INSERT INTO if0_40419506_projects.annotations (user_id, question_id, project_id, answer, score) 
+        INSERT INTO projects.annotations (user_id, question_id, project_id, answer, score) 
         VALUES (?, ?, ?, ?, ?)
     ");
-    // نستخدم 's' لـ $user_answer_to_store (الحرف) و 'i' لـ $score (الرقم)
-    $stmt->bind_param("iiisi", $user_id, $actual_question_id, $project_id, $user_answer_to_store, $score);
+    $stmt->bind_param("iiisi", $user_id, $base_question_id, $project_id, $user_answer_key, $score);
     $stmt->execute();
     $stmt->close();
 
-    // إعادة التوجيه لعرض السؤال الجديد
     header("Location: ".$_SERVER['PHP_SELF']."?id=".$project_id);
     exit;
 }
 
-// إذا لم يكن قد تم الانتهاء، يتم عرض السؤال الحالي
 if (!$is_completed) {
     $parsed = $all_questions[$q_index];
 }
 
-$progress = round(($q_index / $total_q) * 100);
-
+$progress = ($total_q > 0) ? round(($q_index / $total_q) * 100) : 0;
 ?>
 <!DOCTYPE html>
 <html>
@@ -279,20 +271,24 @@ body { font-family: Tahoma, sans-serif; background:#f5f5f5; direction:rtl; }
 
             <h3 style="color:#1e3a8a; margin-bottom:15px;"><?= e($parsed['question']) ?></h3>
 
-            <?php foreach($parsed['options'] as $key => $opt): ?>
-                <label style="
-                    display:block; 
-                    margin-bottom:10px; 
-                    padding:10px; 
-                    background:#f9fafb; 
-                    border-radius:8px; 
-                    cursor:pointer;
-                    border:1px solid #e5e7eb;
-                ">
-                    <input type="radio" name="answer" value="<?= e($key) ?>" required> 
-                    <span style="margin-right:8px;"><?= e($key) ?>) <?= e($opt) ?></span>
-                </label>
-            <?php endforeach; ?>
+            <?php if (!empty($parsed['options'])): ?>
+                <?php foreach($parsed['options'] as $key => $opt): ?>
+                    <label style="
+                        display:block; 
+                        margin-bottom:10px; 
+                        padding:10px; 
+                        background:#f9fafb; 
+                        border-radius:8px; 
+                        cursor:pointer;
+                        border:1px solid #e5e7eb;
+                    ">
+                        <input type="radio" name="answer" value="<?= e($key) ?>" required> 
+                        <span style="margin-right:8px;"><?= e($key) ?>) <?= e($opt) ?></span>
+                    </label>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p style="color:red;">لا توجد خيارات متاحة لهذا السؤال.</p>
+            <?php endif; ?>
 
             <div style="margin-top:20px;">
                 <button class="button" type="submit">التالي</button>
@@ -304,6 +300,7 @@ body { font-family: Tahoma, sans-serif; background:#f5f5f5; direction:rtl; }
 </div>
 </body>
 </html>
+
 
 
 
