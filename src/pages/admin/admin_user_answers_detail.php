@@ -24,8 +24,7 @@ $conn_users = new mysqli($host, $user, $password, $users_db_name);
 $conn_questions = new mysqli($host, $user, $password, $questions_db_name);
 
 $conn_projects->set_charset("utf8mb4");
-$conn_users->set_charset("utf8mb4");
-$conn_questions->set_charset("utf8mb4");
+
 
 if ($conn_projects->connect_error || $conn_users->connect_error || $conn_questions->connect_error) {
     die("DB Connection Error");
@@ -238,6 +237,7 @@ function parse_question_text($text) {
 </body>
 
 </html>
+
 
 
 
