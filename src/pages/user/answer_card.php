@@ -158,7 +158,7 @@ if ($total_q == 0) {
 // -------------------------------------------------------------------
 $stmt = $conn->prepare("
     SELECT COUNT(*) AS answered_count 
-    FROM projects.annotations 
+    FROM if0_40419506_projects.annotations 
     WHERE user_id = ? AND project_id = ?
 ");
 $stmt->bind_param("ii", $user_id, $project_id);
@@ -304,6 +304,7 @@ body { font-family: Tahoma, sans-serif; background:#f5f5f5; direction:rtl; }
 </div>
 </body>
 </html>
+
 
 
 
