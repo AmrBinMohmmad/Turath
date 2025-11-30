@@ -128,7 +128,7 @@ $question_columns = [
 // جلب الأسئلة
 $q_ids_result = $conn->query("
     SELECT number_of_q, type_of_q 
-    FROM projects.cards_questions
+    FROM if0_40419506_projects.cards_questions
     WHERE card_id = $project_id AND number_of_q IS NOT NULL
 ");
 
@@ -300,6 +300,7 @@ body { font-family: Tahoma, sans-serif; background:#f5f5f5; direction:rtl; }
 </div>
 </body>
 </html>
+
 
 
 
