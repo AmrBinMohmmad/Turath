@@ -216,7 +216,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed) {
     // إدخال الإجابة والنتيجة في جدول annotations
     // **ملاحظة:** عمود 'answer' يجب أن يكون من نوع STRING (VARCHAR)
     $stmt = $conn->prepare("
-        INSERT INTO projects.annotations (user_id, question_id, project_id, answer, score) 
+        INSERT INTO if0_40419506_projects.annotations (user_id, question_id, project_id, answer, score) 
         VALUES (?, ?, ?, ?, ?)
     ");
     // نستخدم 's' لـ $user_answer_to_store (الحرف) و 'i' لـ $score (الرقم)
@@ -304,6 +304,7 @@ body { font-family: Tahoma, sans-serif; background:#f5f5f5; direction:rtl; }
 </div>
 </body>
 </html>
+
 
 
 
