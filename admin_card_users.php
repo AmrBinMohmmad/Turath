@@ -29,7 +29,7 @@ $sql_students = "
         COUNT(a.id) as answered_count,
         SUM(a.score) as correct_answers,
         MAX(a.created_at) as last_activity
-    FROM if0_40458841_if0_40458841_users_db.users u
+    FROM if0_40458841_users_db.users u
     JOIN if0_40458841_projects.annotations a ON u.id = a.user_id
     WHERE a.project_id = ?
     GROUP BY u.id
@@ -503,5 +503,6 @@ $limit_text = ($max_limit > 0) ? "من أصل <strong style='color:var(--accent-
     <?php endif; ?>
 
 </body>
+
 
 </html>
