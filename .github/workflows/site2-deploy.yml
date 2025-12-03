@@ -12,7 +12,6 @@ steps:
 - name: Checkout repository
 uses: actions/checkout@v3
 
-```
   - name: FTP Deploy
     uses: SamKirkland/FTP-Deploy-Action@4.3.0
     with:
@@ -21,4 +20,3 @@ uses: actions/checkout@v3
       password: ${{ secrets.FTP_PASSWORD2 }}
       local-dir: ./
       server-dir: /test-project2.free.nf/htdocs/
-```
