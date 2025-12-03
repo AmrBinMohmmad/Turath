@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اوقات الصلاة</title>
+  <link rel="stylesheet" href="style.css">
+<style>
+    body {
+        font-family: "Cairo", sans-serif;
+        background: #e8f4ff;
+        margin: 0;
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h3 {
+        text-align: center;
+        color: #0a3d62;
+        font-size: 28px;
+        margin-bottom: 20px;
+        animation: fadeIn 1.5s ease;
+    }
+
+    table {
+        width: 350px;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        animation: slideUp 1.2s ease;
+    }
+
+    th {
+        background-color: #0a3d62;
+        color: white;
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #d0e6ff;
+        font-size: 17px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #cfe7ff;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .qibla-link {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .qibla-button {
+        background-color: #0a3d62;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 17px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: 0.3s;
+    }
+
+    .qibla-button:hover {
+        background-color: #074067;
+        transform: scale(1.05);
+    }
+
+    .qibla-button i {
+        font-style: normal;
+        font-size: 20px;
+    }
+
+    #loading {
+        text-align: center;
+        color: #0a3d62;
+        margin-top: 10px;
+        font-size: 18px;
+    }
+
+    #next-prayer-box {
+        margin-top: 15px;
+        text-align: center;
+        background: #0a3d62;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 10px;
+        display: none;
+    }
+
+    #next-prayer-name {
+        font-size: 18px;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    #next-prayer-countdown {
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+</style>
+</head>
+
+<body>
+<div>
+    <h3>اوقات الصلاة حسب موقعك</h3>
+
+    <div id="loading">جاري تحديد موقعك... ⏳</div>
+
+    <table border="0" style="display:none;" id="prayer-table">
+        <tr>
+            <th>الوقت</th>
+            <th>الصلاة</th>
+        </tr>
+        <tr>
+            <td id="fajr"></td>
+            <td>الفجر</td>
+        </tr>
+        <tr>
+            <td id="dhuhr"></td>
+            <td>الظهر</td>
+        </tr>
+        <tr>
+            <td id="asr"></td>
+            <td>العصر</td>
+        </tr>
+        <tr>
+            <td id="maghrib"></td>
+            <td>المغرب</td>
+        </tr>
+        <tr>
+            <td id="isha"></td>
+            <td>العشاء</td>
+        </tr>
+    </table>
+
+    <div id="next-prayer-box">
+        <span id="next-prayer-name"></span>
+        <span id="next-prayer-countdown"></span>
+    </div>
+
+    <div class="qibla-link">
+        <a class="qibla-button" href="https://qiblafinder.withgoogle.com/intl/ar/desktop" target="_blank">
+            <i>🧭</i> لمعرفة اتجاه القبلة اضغط هنا
+        </a>
+    </div>
+</div>
+
+<script>
+let currentNextPrayer = null;
+let countdownInterval = null;
+
+
+function cleanTime(time) {
+    if (!time) return "";
+    return time.split(" ")[0]; 
+}
+
+
+function to12(time) {
+    time = cleanTime(time);
+    let [hour, minute] = time.split(":");
+    hour = parseInt(hour);
+
+    const suffix = hour >= 12 ? "PM" : "AM";
+    hour = hour % 12;
+    if (hour === 0) hour = 12;
+
+    return `${hour}:${minute} ${suffix}`;
+}
+
+
+function timeToDate(time24, addDay = 0) {
+    time24 = cleanTime(time24);
+    let [h, m] = time24.split(":").map(Number);
+    const now = new Date();
+    return new Date(now.getFullYear(), now.getMonth(), now.getDate() + addDay, h, m, 0);
+}
+
+
+function setupNextPrayer(timings) {
+    const order = [
+        { key: "Fajr",    id: "fajr",    label: "الفجر" },
+        { key: "Dhuhr",   id: "dhuhr",   label: "الظهر" },
+        { key: "Asr",     id: "asr",     label: "العصر" },
+        { key: "Maghrib", id: "maghrib", label: "المغرب" },
+        { key: "Isha",    id: "isha",    label: "العشاء" }
+    ];
+
+    const now = new Date();
+
+  
+    let todayPrayers = order.map(p => ({
+        ...p,
+        time24: cleanTime(timings[p.key]),
+        date: timeToDate(timings[p.key], 0)
+    }));
+
+ 
+    let next = todayPrayers.find(p => p.date > now);
+
+  
+    if (!next) {
+        const fajr = todayPrayers[0];
+        next = {
+            ...fajr,
+            date: timeToDate(fajr.time24, 1)
+        };
+    }
+
+    currentNextPrayer = next;
+
+    document.getElementById("next-prayer-name").textContent =
+        "الصلاة القادمة: " + next.label;
+    document.getElementById("next-prayer-box").style.display = "block";
+
+    if (countdownInterval) clearInterval(countdownInterval);
+    updateCountdown();
+    countdownInterval = setInterval(updateCountdown, 1000);
+}
+
+
+function updateCountdown() {
+    if (!currentNextPrayer) return;
+
+    const now = new Date();
+    let diff = currentNextPrayer.date - now;
+
+    if (diff <= 0) {
+        clearInterval(countdownInterval);
+   
+        detectLocation();
+        return;
+    }
+
+    const totalSeconds = Math.floor(diff / 1000);
+    const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
+    const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
+    const seconds = String(totalSeconds % 60).padStart(2, "0");
+
+    document.getElementById("next-prayer-countdown").textContent =
+        `${hours}:${minutes}:${seconds}`;
+}
+
+
+async function getPrayerTimesByLocation(lat, long) {
+
+    const url = `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${long}&method=4`;
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const t = data.data.timings;
+
+    document.getElementById("fajr").textContent    = to12(t.Fajr);
+    document.getElementById("dhuhr").textContent   = to12(t.Dhuhr);
+    document.getElementById("asr").textContent     = to12(t.Asr);
+    document.getElementById("maghrib").textContent = to12(t.Maghrib);
+    document.getElementById("isha").textContent    = to12(t.Isha);
+
+    document.getElementById("loading").style.display = "none";
+    document.getElementById("prayer-table").style.display = "table";
+
+    setupNextPrayer(t);
+}
+
+
+function detectLocation() {
+    document.getElementById("loading").style.display = "block";
+    document.getElementById("loading").textContent = "جاري تحديد موقعك... ⏳";
+    document.getElementById("prayer-table").style.display = "none";
+    document.getElementById("next-prayer-box").style.display = "none";
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (pos) => {
+                const lat = pos.coords.latitude;
+                const long = pos.coords.longitude;
+                getPrayerTimesByLocation(lat, long);
+            },
+            () => {
+                document.getElementById("loading").textContent = "تعذر تحديد موقعك ❌";
+            }
+        );
+    } else {
+        document.getElementById("loading").textContent = "المتصفح لا يدعم تحديد الموقع";
+    }
+}
+
+detectLocation();
+</script>
+
+</body>
+</html>
