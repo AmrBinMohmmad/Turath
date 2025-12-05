@@ -19,6 +19,7 @@ $questions_count = $conn->query("SELECT COUNT(*) FROM if0_40458841_projects.card
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
     
+    
     <style>
         :root {
             --bg-main: #020617; --bg-secondary: #0f172a; --text-main: #f8fafc; --text-muted: #94a3b8;
@@ -47,7 +48,49 @@ $questions_count = $conn->query("SELECT COUNT(*) FROM if0_40458841_projects.card
         .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(198, 147, 32, 0.4); }
 
         /* Hero */
-        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 120px 20px; background: radial-gradient(circle at 50% 30%, rgba(0, 108, 53, 0.15), transparent 70%); position: relative; }
+       .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px;
+            position: relative;
+            overflow: hidden; /* ضروري لقص أطراف الفيديو الزائدة */
+            /* يمكنك إبقاء الخلفية القديمة كاحتياط في حال لم يعمل الفيديو */
+            background: var(--bg-main); 
+        }
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* يجعل الفيديو يغطي المساحة بالكامل دون تشوه */
+            z-index: 0;
+        }
+
+/* طبقة تعتيم فوق الفيديو لضمان قراءة النص */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* لون أسود شفاف بنسبة 60% */
+            z-index: 1;
+        }
+
+/* ضمان أن المحتوى النصي يظهر فوق الفيديو */
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+/* (اختياري) إذا كنت تريد إبقاء نقش الزخرفة فوق الفيديو */
+.hero::after {
+    z-index: 1; /* اجعلها بنفس مستوى التعتيم */
+}
         .hero::after { content: ''; position: absolute; top:0; left:0; width:100%; height:100%; background: url('https://www.transparenttextures.com/patterns/arabesque.png'); opacity: 0.04; pointer-events: none; }
         
         .hero h1 { font-size: var(--h1); font-weight: 900; line-height: 1.3; margin-bottom: 25px; }
@@ -105,7 +148,7 @@ $questions_count = $conn->query("SELECT COUNT(*) FROM if0_40458841_projects.card
 <body>
 
     <nav class="navbar">
-        <a href="#" class="logo">
+        <a href="favicon.png" class="logo">
             <i class='bx bxl-flutter'></i>
             <span id="nav-logo">منصة تراث</span>
         </a>
@@ -123,21 +166,28 @@ $questions_count = $conn->query("SELECT COUNT(*) FROM if0_40458841_projects.card
     </nav>
 
     <header class="hero">
-        <div class="hero-content">
-            <h1 id="hero-title">جذورنا عميقة.. <br> <span>وثقافتنا حياة</span></h1>
-            <p id="hero-desc">
-                انطلق في رحلة رقمية غامرة لاستكشاف كنوز اللهجات السعودية. من قمم جبال السروات إلى رمال الربع الخالي، نجمع لك آلاف الكلمات والأمثال الشعبية في منصة تعليمية تفاعلية تعتمد على التحدي والمنافسة.
-            </p>
-            <div class="cta-box">
-                <?php if(isset($_SESSION['user_id'])): ?>
-                    <a href="user_page.php" class="btn-gold" id="btn-start">ابدأ التحدي الآن</a>
-                <?php else: ?>
-                    <a href="signup.php" class="btn-gold" id="btn-join">أنشئ حساباً مجانياً</a>
-                    <a href="login.php" class="btn-outline" id="btn-browse">تصفح كزائر</a>
-                <?php endif; ?>
-            </div>
+    <video autoplay muted loop playsinline class="hero-video">
+        <source src="Saudi.mp4" type="video/mp4">
+        متصفحك لا يدعم تشغيل الفيديو.
+    </video>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1 id="hero-title">جذورنا عميقة.. <br> <span>وثقافتنا حياة</span></h1>
+        <p id="hero-desc">
+            انطلق في رحلة رقمية غامرة لاستكشاف كنوز اللهجات السعودية. من قمم جبال السروات إلى رمال الربع الخالي، نجمع لك آلاف الكلمات والأمثال الشعبية في منصة تعليمية تفاعلية تعتمد على التحدي والمنافسة.
+        </p>
+        <div class="cta-box">
+            <?php if(isset($_SESSION['user_id'])): ?>
+                <a href="user_page.php" class="btn-gold" id="btn-start">ابدأ التحدي الآن</a>
+            <?php else: ?>
+                <a href="signup.php" class="btn-gold" id="btn-join">أنشئ حساباً مجانياً</a>
+                <a href="login.php" class="btn-outline" id="btn-browse">تصفح كزائر</a>
+            <?php endif; ?>
         </div>
-    </header>
+    </div>
+</header>
 
     <div class="stats-bar">
         <div class="stat-item">
