@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Outfit:wght@300;400;700&display=swap');
 
 :root {
-  /* الألوان - الوضع الداكن */
   --bg-main: #020617;
   --bg-secondary: #0f172a;
   --card-dark: #1e293b;
@@ -11,18 +10,15 @@
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.05);
 
-  /* الهوية */
   --saudi-green: #006C35;
   --gold-light: #F2D06B;
   --gold-dark: #C69320;
 
-  /* ألوان الحالة */
   --accent-blue: #3b82f6;
   --accent-red: #ef4444;
   --accent-green: #10b981;
 }
 
-/* الوضع الفاتح */
 body.light-mode {
   --bg-main: #fdfbf7;
   --bg-secondary: #f3f4f6;
@@ -80,7 +76,6 @@ body {
   gap: 15px;
 }
 
-/* --- الأزرار --- */
 .icon-btn {
   width: 40px;
   height: 40px;
