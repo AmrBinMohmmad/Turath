@@ -36,18 +36,6 @@ body.light-mode .info-card:hover {
     box-shadow: 0 15px 30px rgba(198, 147, 32, 0.15); 
     border-color: var(--gold-dark);
 }
-/* هذا الكود يجعل الطبقة فوق الفيديو سوداء خفيفة بدلاً من بيضاء في الوضع الفاتح */
-body.light-mode .hero-overlay {
-    background: rgba(0, 0, 0, 0.3); /* طبقة سوداء خفيفة لزيادة وضوح الفيديو */
-}
-
-/* نجبر النص أن يبقى أبيض فوق الفيديو حتى في الوضع الفاتح */
-body.light-mode .hero h1,
-body.light-mode .hero p {
-    color: #fff; 
-    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* ظل أسود للنص للقراءة بوضوح */
-}
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -495,4 +483,25 @@ body.light-mode .hero p {
                 gap: 40px;
             }
         }
+/* 1. إصلاح الفيديو الباهت في الوضع الفاتح */
+body.light-mode .hero-overlay {
+    /* نستخدم تدرج لوني أسود ليعطي عمقاً أفضل من اللون المصمت */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6)) !important;
+}
+
+/* 2. ضمان أن النصوص بيضاء ناصعة ومقروءة */
+body.light-mode .hero h1,
+body.light-mode .hero p {
+    color: #ffffff !important;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8) !important; /* زيادة الظل خلف النص */
+}
+
+/* 3. إصلاح لون العناوين الرئيسية */
+body.light-mode .hero h1 span {
+    /* التأكد من أن التدرج الذهبي يظهر بوضوح */
+    background: linear-gradient(to right, #F2D06B, #C69320) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
 
