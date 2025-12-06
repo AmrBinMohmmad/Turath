@@ -57,7 +57,7 @@ session_start(); ?>
         <p id="meth-p1">نحن لا نجمع الكلمات عشوائياً. تمر كل معلومة في منصتنا بمراحل تدقيق صارمة:</p>
         <ul style="list-style:none; color:var(--text-muted);">
           <li style="margin-bottom:10px;"><i class='bx bxs-check-circle' style="color:var(--saudi-green)"></i> <span
-              id="m1">جمع البيانات من المصادر الموثوقة وكبار السن.</span></li>
+              id="m1">جمع البيانات من المصادر الموثوقة</span></li>
           <li style="margin-bottom:10px;"><i class='bx bxs-check-circle' style="color:var(--saudi-green)"></i> <span
               id="m2">مراجعة لغوية للتأكد من أصل الكلمة ومعناها الدقيق.</span></li>
           <li style="margin-bottom:10px;"><i class='bx bxs-check-circle' style="color:var(--saudi-green)"></i> <span
