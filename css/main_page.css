@@ -499,9 +499,10 @@ body.light-mode .hero p {
 /* 3. إصلاح لون العناوين الرئيسية */
 body.light-mode .hero h1 span {
     /* التأكد من أن التدرج الذهبي يظهر بوضوح */
-    background: linear-gradient(to right, #F2D06B, #C69320) !important;
+    background: linear-gradient(to right, #F2D06B, #F2D06B) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
 }
+
 
 
