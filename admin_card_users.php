@@ -136,6 +136,7 @@ $student_count = count($students_list);
     <meta charset="UTF-8">
     <title>الطلاب والتحليل | <?= htmlspecialchars($card['card_name']) ?></title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/png" href="Favicon.png" />
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     <style>
@@ -588,3 +589,4 @@ $student_count = count($students_list);
 </body>
 
 </html>
+
