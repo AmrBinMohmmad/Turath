@@ -20,28 +20,28 @@ $isAdminPage = (strpos($current_page, 'admin') === 0 || strpos($current_page, 'c
 
     <nav>
         <?php if ($isAdminPage): ?>
-            <a href="admin/admin_page.php" class="nav-item <?= $current_page == 'admin_page.php' ? 'active' : '' ?>">
+            <a href="admin_page.php" class="nav-item <?= $current_page == 'admin_page.php' ? 'active' : '' ?>">
                 <i class='bx bxs-dashboard'></i> الرئيسية
             </a>
 
-            <a href="admin/admin_cards_list.php"
+            <a href="admin_cards_list.php"
                 class="nav-item <?= ($current_page == 'admin_cards_list.php' || $current_page == 'admin_card_users.php' || $current_page == 'admin_user_analysis.php') ? 'active' : '' ?>">
                 <i class='bx bxs-graduation'></i> نتائج الطلاب
             </a>
 
-            <a href="admin/admin_project_answers.php"
+            <a href="admin_project_answers.php"
                 class="nav-item <?= $current_page == 'admin_project_answers.php' ? 'active' : '' ?>">
                 <i class='bx bxs-data'></i> تحليل الإجابات
             </a>
-            <a href="admin/admin_user_answers_detail.php"
+            <a href="admin_user_answers_detail.php"
                 class="nav-item <?= $current_page == 'admin_user_answers_detail.php' ? 'active' : '' ?>">
                 <i class='bx bxs-user-detail'></i> تفاصيل الطلاب
             </a>
-            <a href="admin/create_card_admin_site.php"
+            <a href="create_card_admin_site.php"
                 class="nav-item <?= $current_page == 'create_card_admin_site.php' ? 'active' : '' ?>">
                 <i class='bx bxs-plus-square'></i> إضافة كارد
             </a>
-            <a href="admin/admin_import_data.php"
+            <a href="admin_import_data.php"
                 class="nav-item <?= $current_page == 'admin_import_questions.php' ? 'active' : '' ?>">
                 <i class='bx bx-import'></i> استيراد أسئلة
             </a>
@@ -89,4 +89,5 @@ $isAdminPage = (strpos($current_page, 'admin') === 0 || strpos($current_page, 'c
         const menuBtn = document.getElementById('menuBtn');
         if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
     });
+
 </script>
