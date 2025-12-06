@@ -32,6 +32,7 @@ $cards = $conn->query($sql);
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Outfit:wght@300;400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/admin_cards_list.css">
+     <link rel="icon" type="image/png" href="Favicon.png" />
 </head>
 <body>
 
@@ -98,3 +99,4 @@ $cards = $conn->query($sql);
 </html>
 
 </html>
+
