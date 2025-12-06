@@ -30,6 +30,8 @@ $users = $conn->query($sql);
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Outfit:wght@300;400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/admin_user_answers_detail.css">
+    <link rel="icon" type="image/png" href="Favicon.png" />
+
 </head>
 
 <body>
@@ -89,3 +91,4 @@ $users = $conn->query($sql);
 
 
 </html>
+
