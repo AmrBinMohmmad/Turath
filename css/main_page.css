@@ -36,6 +36,17 @@ body.light-mode .info-card:hover {
     box-shadow: 0 15px 30px rgba(198, 147, 32, 0.15); 
     border-color: var(--gold-dark);
 }
+/* هذا الكود يجعل الطبقة فوق الفيديو سوداء خفيفة بدلاً من بيضاء في الوضع الفاتح */
+body.light-mode .hero-overlay {
+    background: rgba(0, 0, 0, 0.3); /* طبقة سوداء خفيفة لزيادة وضوح الفيديو */
+}
+
+/* نجبر النص أن يبقى أبيض فوق الفيديو حتى في الوضع الفاتح */
+body.light-mode .hero h1,
+body.light-mode .hero p {
+    color: #fff; 
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* ظل أسود للنص للقراءة بوضوح */
+}
 
         * {
             box-sizing: border-box;
@@ -484,3 +495,4 @@ body.light-mode .info-card:hover {
                 gap: 40px;
             }
         }
+
