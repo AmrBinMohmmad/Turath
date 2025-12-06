@@ -266,354 +266,424 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Outfit:wght@300;400;700&display=swap"
         rel="stylesheet">
     <style>
-        /* ... نفس الستايل مع الوضع الفاتح ... */
-        :root {
-            --bg-dark: #020617;
-            --card-dark: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.05);
-            --saudi-green: #006C35;
-            --gold-light: #F2D06B;
-            --gold-dark: #C69320;
-            --ai-color: #8b5cf6;
-        }
+    /* =========================================
+       1. المتغيرات والألوان (تم توحيدها لتكون فخمة)
+       ========================================= */
+    :root {
+        /* الوضع الداكن (Dark Mode) */
+        --bg-dark: #020617;
+        --card-dark: #1e293b;
+        --text-main: #f8fafc;
+        --text-muted: #94a3b8;
+        --glass-bg: rgba(255, 255, 255, 0.03);
+        --glass-border: rgba(255, 255, 255, 0.05);
+        --saudi-green: #006C35;
+        --gold-light: #F2D06B;
+        --gold-dark: #C69320;
+        --shadow-soft: 0 20px 50px rgba(0, 0, 0, 0.3);
+        --option-bg: rgba(255, 255, 255, 0.02);
+        --option-border: rgba(255, 255, 255, 0.05);
+        --option-hover: rgba(255, 255, 255, 0.05);
+    }
 
-        body.light-mode {
-            --bg-dark: #f8fafc;
-            --card-dark: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --glass-bg: #f1f5f9;
-            --glass-border: #e2e8f0;
-        }
+    /* الوضع الفاتح (Luxury Light Mode) */
+    body.light-mode {
+        --bg-dark: #F9F7F2; /* بيج/سكري دافئ */
+        --card-dark: #FFFFFF; /* أبيض نقي */
+        --text-main: #2C1810; /* بني غامق */
+        --text-muted: #6D5448; /* بني فاتح */
+        --glass-bg: #F5F2EB;
+        --glass-border: rgba(146, 118, 90, 0.15);
+        --shadow-soft: 0 15px 40px rgba(44, 24, 16, 0.08); /* ظل دافئ */
+        --option-bg: #Fbf9f6;
+        --option-border: #E5E0D8;
+        --option-hover: #fff;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            transition: all 0.3s ease;
-        }
+    /* =========================================
+       2. التنسيقات العامة
+       ========================================= */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        transition: all 0.3s ease;
+    }
 
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: radial-gradient(circle at 50% 0%, rgba(0, 108, 53, 0.15), transparent 60%);
-        }
+    body {
+        font-family: 'Cairo', sans-serif;
+        background-color: var(--bg-dark);
+        color: var(--text-main);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* خلفية زخرفية خفيفة */
+        background-image: radial-gradient(circle at 50% 0%, rgba(0, 108, 53, 0.1), transparent 60%);
+    }
 
-        /* زر العودة والتحكم */
-        .top-controls {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-        }
+    /* =========================================
+       3. الأزرار العلوية
+       ========================================= */
+    .top-controls {
+        position: absolute;
+        top: 20px;
+        right: 20px; /* الافتراضي للعربي */
+        display: flex;
+        gap: 10px;
+        z-index: 100;
+    }
 
-        .icon-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid var(--glass-border);
-            background: var(--glass-bg);
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 18px;
-        }
+    /* قلب المكان في الإنجليزي */
+    html[dir="ltr"] .top-controls {
+        right: auto;
+        left: 20px;
+    }
 
-        .icon-btn:hover {
-            background: var(--saudi-green);
-            color: white;
-        }
+    .icon-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid var(--glass-border);
+        background: var(--glass-bg);
+        color: var(--text-main);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 18px;
+    }
 
-        .container {
-            width: 100%;
-            max-width: 700px;
-            padding: 20px;
-            margin-top: 60px;
-        }
+    .icon-btn:hover {
+        background: var(--saudi-green);
+        color: white;
+        border-color: var(--saudi-green);
+    }
 
-        .question-card {
-            background: var(--card-dark);
-            border-radius: 25px;
-            padding: 40px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
+    /* =========================================
+       4. بطاقة السؤال
+       ========================================= */
+    .container {
+        width: 100%;
+        max-width: 700px;
+        padding: 20px;
+        margin-top: 60px;
+    }
 
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+    .question-card {
+        background: var(--card-dark);
+        border-radius: 25px;
+        padding: 40px;
+        border: 1px solid var(--glass-border);
+        box-shadow: var(--shadow-soft);
+        position: relative;
+        overflow: hidden;
+    }
 
-        .q-counter {
-            font-size: 14px;
-            color: var(--text-muted);
-            font-weight: bold;
-        }
+    .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
 
-        .q-counter span {
-            color: var(--gold-light);
-            font-size: 18px;
-        }
+    .q-counter {
+        font-size: 14px;
+        color: var(--text-muted);
+        font-weight: bold;
+    }
 
-        .progress-track {
-            width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            margin-bottom: 30px;
-            overflow: hidden;
-        }
+    .q-counter span {
+        color: var(--gold-light);
+        font-size: 18px;
+    }
+    
+    /* تصحيح لون الرقم في اللايت مود */
+    body.light-mode .q-counter span {
+        color: #d97706; 
+    }
 
-        body.light-mode .progress-track {
-            background: #e2e8f0;
-        }
+    /* =========================================
+       5. شريط التقدم (Progress Bar)
+       ========================================= */
+    .progress-track {
+        width: 100%;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+        margin-bottom: 30px;
+        overflow: hidden;
+        /* لتحديد الاتجاه بناءً على اللغة */
+        direction: inherit; 
+    }
 
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
-            width:
-                <?= $progress ?>
-                %;
-            border-radius: 10px;
-            transition: width 0.5s ease;
-        }
+    body.light-mode .progress-track {
+        background: #E5E0D8;
+    }
 
-        .mission-text {
-            color: var(--gold-light);
-            font-size: 20px;
-            font-weight: 800;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            display: block;
-            border-bottom: 1px solid rgba(242, 208, 107, 0.2);
-            padding-bottom: 15px;
-        }
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+        width: <?= $progress ?>%;
+        border-radius: 10px;
+        transition: width 0.5s ease;
+        /* في العربية سيبدأ من اليمين، وفي الإنجليزية سيبدأ من اليسار تلقائياً */
+    }
 
-        body.light-mode .mission-text {
-            color: #d97706;
-            border-color: rgba(217, 119, 6, 0.2);
-        }
+    /* =========================================
+       6. النصوص والأسئلة
+       ========================================= */
+    .mission-text {
+        color: var(--gold-light);
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        display: block;
+        border-bottom: 1px solid rgba(242, 208, 107, 0.2);
+        padding-bottom: 15px;
+    }
 
-        .question-text {
-            font-size: 24px;
-            font-weight: 700;
-            line-height: 1.5;
-            color: var(--text-main);
-            margin-bottom: 30px;
-        }
+    body.light-mode .mission-text {
+        color: #b45309; /* ذهبي محروق */
+        border-color: rgba(146, 118, 90, 0.15);
+    }
 
-        .options-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    .question-text {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.5;
+        color: var(--text-main);
+        margin-bottom: 30px;
+    }
 
-        .option-label {
-            display: flex;
-            align-items: center;
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            cursor: pointer;
-            transition: 0.2s;
-            position: relative;
-        }
+    /* =========================================
+       7. قائمة الخيارات
+       ========================================= */
+    .options-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
 
-        body.light-mode .option-label {
-            background: #f8fafc;
-            border-color: #e2e8f0;
-        }
+    .option-label {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        background: var(--option-bg);
+        border: 1px solid var(--option-border);
+        border-radius: 15px;
+        cursor: pointer;
+        transition: 0.2s;
+        position: relative;
+    }
 
-        .option-label:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--gold-light);
-        }
+    .option-label:hover {
+        background: var(--option-hover);
+        border-color: var(--gold-light);
+    }
 
-        body.light-mode .option-label:hover {
-            background: #f1f5f9;
-            border-color: #d97706;
-        }
+    /* تحسين الهوفر في اللايت مود */
+    body.light-mode .option-label:hover {
+        border-color: #d97706;
+        box-shadow: 0 5px 15px rgba(198, 147, 32, 0.1);
+    }
 
-        .option-label input[type="radio"] {
-            display: none;
-        }
+    .option-label input[type="radio"] {
+        display: none;
+    }
 
-        .option-label:has(input:checked) {
-            background: rgba(242, 208, 107, 0.1);
-            border-color: var(--gold-light);
-            box-shadow: 0 0 15px rgba(242, 208, 107, 0.1);
-        }
+    /* حالة الاختيار (Checked) */
+    .option-label:has(input:checked) {
+        background: rgba(242, 208, 107, 0.1);
+        border-color: var(--gold-light);
+        box-shadow: 0 0 15px rgba(242, 208, 107, 0.1);
+    }
+    
+    body.light-mode .option-label:has(input:checked) {
+        background: #fffbeb;
+        border-color: #d97706;
+    }
 
-        .opt-key {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 14px;
-            margin-left: 15px;
-            color: var(--text-muted);
-            transition: 0.2s;
-        }
+    /* دائرة الحرف (أ، ب، ج) */
+    .opt-key {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 14px;
+        color: var(--text-muted);
+        transition: 0.2s;
+        
+        /* المسافات الافتراضية للعربي */
+        margin-left: 15px;
+        margin-right: 0;
+    }
 
-        body.light-mode .opt-key {
-            background: #e2e8f0;
-            color: #64748b;
-        }
+    /* عكس المسافات للإنجليزي */
+    html[dir="ltr"] .opt-key {
+        margin-left: 0;
+        margin-right: 15px;
+    }
 
-        body[dir="ltr"] .opt-key {
-            margin-left: 0;
-            margin-right: 15px;
-        }
+    body.light-mode .opt-key {
+        background: #e2e8f0;
+        color: #64748b;
+    }
 
-        .option-label input:checked+.opt-key {
-            background: var(--gold-light);
-            color: #000;
-        }
+    .option-label input:checked+.opt-key {
+        background: var(--gold-light);
+        color: #000;
+    }
+    
+    body.light-mode .option-label input:checked+.opt-key {
+        background: #d97706;
+        color: #fff;
+    }
 
-        .opt-text {
-            font-size: 16px;
-            font-weight: 500;
-        }
+    .opt-text {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--text-main);
+    }
 
+    /* =========================================
+       8. الأزرار السفلية
+       ========================================= */
+    .actions {
+        margin-top: 40px;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .btn-submit {
+        flex: 2;
+        background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+        color: #000;
+        padding: 15px;
+        border: none;
+        border-radius: 12px;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+        min-width: 150px;
+    }
+    
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(198, 147, 32, 0.3);
+    }
+
+    .btn-exit {
+        flex: 1;
+        background: transparent;
+        border: 1px solid rgba(239, 68, 68, 0.3);
+        color: #ef4444;
+        padding: 15px;
+        border-radius: 12px;
+        font-weight: bold;
+        font-size: 16px;
+        text-decoration: none;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        min-width: 100px;
+    }
+    
+    .btn-exit:hover {
+        background: rgba(239, 68, 68, 0.1);
+    }
+
+    .btn-ai-hint {
+        flex: 1;
+        background: linear-gradient(135deg, #dcfce7, #22c55e);
+        color: #064e3b;
+        padding: 15px;
+        border: none;
+        border-radius: 12px;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-width: 120px;
+    }
+    
+    .btn-ai-hint:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(34, 197, 94, 0.2);
+    }
+
+    .bot-response-box {
+        margin-top: 20px;
+        padding: 15px;
+        background: rgba(139, 92, 246, 0.1);
+        border: 1px solid rgba(139, 92, 246, 0.3);
+        border-radius: 12px;
+        color: var(--text-main);
+        font-size: 14px;
+        display: none;
+        animation: fadeIn 0.5s ease;
+    }
+    
+    /* تصحيح مربع البوت في اللايت مود */
+    body.light-mode .bot-response-box {
+        background: #f3e8ff;
+        border-color: #d8b4fe;
+        color: #6b21a8;
+    }
+
+    /* =========================================
+       9. شاشة الانتهاء (Completion)
+       ========================================= */
+    .completion-box {
+        text-align: center;
+        padding: 40px 0;
+    }
+
+    .completion-icon {
+        font-size: 80px;
+        color: var(--gold-light);
+        margin-bottom: 20px;
+        animation: bounce 2s infinite;
+    }
+    
+    body.light-mode .completion-icon {
+        color: #d97706;
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-20px); }
+        60% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-5px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
         .actions {
-            margin-top: 40px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+            flex-direction: column;
         }
-
-        .btn-submit {
-            flex: 2;
-            background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
-            color: #000;
+        .container {
             padding: 15px;
-            border: none;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-            min-width: 150px;
+            margin-top: 50px;
         }
-
-        .btn-exit {
-            flex: 1;
-            background: transparent;
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #ef4444;
-            padding: 15px;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 16px;
-            text-decoration: none;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            min-width: 100px;
-        }
-
-        .btn-ai-hint {
-            flex: 1;
-            background: linear-gradient(135deg, #a78bfa, #7c3aed);
-            color: #fff;
-            padding: 15px;
-            border: none;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            min-width: 120px;
-        }
-
-        .bot-response-box {
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(139, 92, 246, 0.1);
-            border: 1px solid rgba(139, 92, 246, 0.3);
-            border-radius: 12px;
-            color: var(--text-main);
-            font-size: 14px;
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .completion-box {
-            text-align: center;
-            padding: 40px 0;
-        }
-
-        .completion-icon {
-            font-size: 80px;
-            color: var(--gold-light);
-            margin-bottom: 20px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-20px);
-            }
-
-            60% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-5px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .actions {
-                flex-direction: column;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
 
 <body>
