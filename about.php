@@ -160,7 +160,7 @@ session_start(); ?>
         copy: "&copy; 2025 جميع الحقوق محفوظة لمنصة تراث"
       },
       en: {
-        navLogo: "Torath Platform", abTitle: "A Story of <span>Passion</span>",
+        navLogo: "Torath Platform", navDash: "Dashboard", navLogin: "Sign In",
         abDesc: "In the tech era, we noticed a gap between generations and their heritage. Torath is the bridge.",
         methTitle: "Our <span>Methodology</span>", methP1: "We verify every piece of info:",
         m1: "Data collection from trusted sources.", m2: "Linguistic review.", m3: "Accurate geographical classification.",
