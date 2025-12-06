@@ -24,56 +24,10 @@ $recent_users = $conn->query("SELECT id, username, email, xp, level FROM if0_404
     <title>Admin Dashboard | لوحة المدير</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
-        :root { --bg-dark: #0f172a; --card-dark: #1e293b; --text-main: #f1f5f9; --text-muted: #94a3b8; --accent-blue: #3b82f6; --accent-red: #ef4444; --accent-green: #10b981; --accent-orange: #f59e0b; --sidebar-width: 260px; }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body { font-family: 'Outfit', sans-serif; background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; overflow-x: hidden; display: block; }
-        
-        /* Sidebar Styles need to be present for layout, even if HTML is included */
-        .sidebar { width: var(--sidebar-width); background: var(--card-dark); padding: 25px; display: flex; flex-direction: column; border-left: 1px solid rgba(255,255,255,0.05); position: fixed; height: 100%; right: 0; top: 0; z-index: 1000; transition: all 0.3s ease; box-sizing: border-box; }
-        .sidebar.close { transform: translateX(100%); }
-        .logo { font-size: 24px; font-weight: 700; margin-bottom: 50px; display: flex; align-items: center; gap: 10px; color: var(--text-main); white-space: nowrap; }
-        .logo span { color: var(--accent-red); }
-        .nav-item { display: flex; align-items: center; gap: 15px; padding: 14px 18px; color: var(--text-muted); text-decoration: none; border-radius: 12px; margin-bottom: 8px; transition: 0.3s; font-size: 15px; white-space: nowrap; }
-        .nav-item:hover, .nav-item.active { background: rgba(239, 68, 68, 0.1); color: var(--accent-red); }
-
-        .main-content { margin-right: var(--sidebar-width); padding: 30px; width: auto; min-width: 0; transition: all 0.3s ease; }
-        .main-content.expand { margin-right: 0; }
-
-        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 35px; }
-        .menu-toggle { font-size: 32px; color: var(--text-main); cursor: pointer; margin-left: 15px; display: none; } /* مخفي في الديسك توب */
-        .admin-badge { background: var(--accent-red); color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4); }
-
-        .dashboard-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-bottom: 30px; }
-        .card { background: var(--card-dark); border-radius: 20px; padding: 25px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 4px 20px rgba(0,0,0,0.2); position: relative; overflow: hidden; height: 100%; }
-        .stat-card { display: flex; flex-direction: column; justify-content: space-between; height: 140px; }
-        .stat-icon { position: absolute; top: 20px; left: 20px; font-size: 40px; opacity: 0.1; }
-        .stat-value { font-size: 32px; font-weight: 700; color: var(--text-main); margin-top: auto; }
-        .stat-label { font-size: 14px; color: var(--text-muted); }
-
-        .actions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .action-btn { background: linear-gradient(135deg, var(--card-dark) 0%, #263345 100%); padding: 20px; border-radius: 15px; text-align: center; text-decoration: none; color: var(--text-main); border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
-        .action-btn:hover { transform: translateY(-5px); border-color: var(--accent-red); box-shadow: 0 5px 15px rgba(239, 68, 68, 0.1); }
-        .action-btn i { font-size: 28px; color: var(--accent-red); }
-
-        .table-container { grid-column: span 3; background: var(--card-dark); border-radius: 20px; padding: 20px; border: 1px solid rgba(255,255,255,0.05); }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th { text-align: right; color: var(--text-muted); font-size: 13px; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        td { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 14px; }
-        tr:last-child td { border-bottom: none; }
-        .user-row:hover { background: rgba(255,255,255,0.02); }
-
-        @media (max-width: 1100px) {
-            .dashboard-grid, .actions-grid { grid-template-columns: 1fr; }
-            .sidebar { transform: translateX(100%); right: 0; }
-            .sidebar.active { transform: translateX(0); box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
-            .main-content { margin-right: 0; }
-            .menu-toggle { display: flex; } /* إظهار الزر في الجوال */
-            .table-container { grid-column: span 1; overflow-x: auto; }
-        }
-    </style>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Outfit:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/admin_page.css">
 </head>
 <body>
 
@@ -85,7 +39,7 @@ $recent_users = $conn->query("SELECT id, username, email, xp, level FROM if0_404
             <div style="display: flex; align-items: center;">
                 <i class='bx bx-menu menu-toggle' id="menuBtn"></i>
                 <div style="margin-right: 15px;">
-                    <h1 style="font-size: 24px; margin:0;">لوحة التحكم ⚙️</h1>
+                    <h1 style="font-size: 24px; margin:0;">لوحة التحكم </h1>
                     <p style="color: var(--text-muted); font-size: 14px; margin:5px 0 0 0;">نظرة شاملة على أداء المنصة</p>
                 </div>
             </div>
