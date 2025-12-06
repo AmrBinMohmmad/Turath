@@ -157,7 +157,7 @@ session_start(); ?>
         valTitle: "قيمنا <span>الراسخة</span>", v1t: "الدقة", v1d: "معلومات موثوقة.", v2t: "الابتكار", v2d: "تقنية تخدم الثقافة.", v3t: "الشمولية", v3d: "كل المناطق.",
         teamTitle: "العقول خلف <span>المنصة</span>", teamDesc: "طلاب شغوفين مهتمين بالثقافة السعودية والتقنية.",
         r1: "Team leader/Frontend developer", r2: "Frontend developer", r3: "Frontend developer",
-        copy: "&copy; 2024 جميع الحقوق محفوظة."
+        copy: "&copy; 2025 جميع الحقوق محفوظة لمنصة تراث"
       },
       en: {
         navLogo: "Torath Platform", abTitle: "A Story of <span>Passion</span>",
@@ -167,7 +167,7 @@ session_start(); ?>
         valTitle: "Our <span>Values</span>", v1t: "Accuracy", v1d: "Reliable info.", v2t: "Innovation", v2d: "Tech for culture.", v3t: "Inclusivity", v3d: "All regions.",
         teamTitle: "Minds Behind <span>It</span>", teamDesc: "Passionate Saudi team.",
         r1: "Team leader/Frontend developer", r2: "Frontend developer", r3: "Frontend developer",
-        copy: "&copy; 2024 All rights reserved."
+        copy: "&copy; 2025 All rights reserved to Torath Platform"
       }
     };
 
