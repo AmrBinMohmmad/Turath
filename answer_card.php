@@ -265,12 +265,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
     <link
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Outfit:wght@300;400;700&display=swap"
         rel="stylesheet">
+        <link rel="icon" type="image/png" href="Favicon.png" />
+
     <style>
-    /* =========================================
-       1. المتغيرات والألوان (تم توحيدها لتكون فخمة)
-       ========================================= */
     :root {
-        /* الوضع الداكن (Dark Mode) */
         --bg-dark: #020617;
         --card-dark: #1e293b;
         --text-main: #f8fafc;
@@ -286,23 +284,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
         --option-hover: rgba(255, 255, 255, 0.05);
     }
 
-    /* الوضع الفاتح (Luxury Light Mode) */
     body.light-mode {
-        --bg-dark: #F9F7F2; /* بيج/سكري دافئ */
-        --card-dark: #FFFFFF; /* أبيض نقي */
-        --text-main: #2C1810; /* بني غامق */
-        --text-muted: #6D5448; /* بني فاتح */
+        --bg-dark: #F9F7F2; 
+        --card-dark: #FFFFFF; 
+        --text-main: #2C1810; 
+        --text-muted: #6D5448; 
         --glass-bg: #F5F2EB;
         --glass-border: rgba(146, 118, 90, 0.15);
-        --shadow-soft: 0 15px 40px rgba(44, 24, 16, 0.08); /* ظل دافئ */
+        --shadow-soft: 0 15px 40px rgba(44, 24, 16, 0.08); 
         --option-bg: #Fbf9f6;
         --option-border: #E5E0D8;
         --option-hover: #fff;
     }
-
-    /* =========================================
-       2. التنسيقات العامة
-       ========================================= */
     * {
         box-sizing: border-box;
         margin: 0;
@@ -318,23 +311,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
         display: flex;
         align-items: center;
         justify-content: center;
-        /* خلفية زخرفية خفيفة */
         background-image: radial-gradient(circle at 50% 0%, rgba(0, 108, 53, 0.1), transparent 60%);
     }
 
-    /* =========================================
-       3. الأزرار العلوية
-       ========================================= */
+  
     .top-controls {
         position: absolute;
         top: 20px;
-        right: 20px; /* الافتراضي للعربي */
+        right: 20px; 
         display: flex;
         gap: 10px;
         z-index: 100;
     }
 
-    /* قلب المكان في الإنجليزي */
+    
     html[dir="ltr"] .top-controls {
         right: auto;
         left: 20px;
@@ -360,9 +350,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
         border-color: var(--saudi-green);
     }
 
-    /* =========================================
-       4. بطاقة السؤال
-       ========================================= */
+
     .container {
         width: 100%;
         max-width: 700px;
@@ -398,14 +386,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
         font-size: 18px;
     }
     
-    /* تصحيح لون الرقم في اللايت مود */
+   
     body.light-mode .q-counter span {
         color: #d97706; 
     }
 
-    /* =========================================
-       5. شريط التقدم (Progress Bar)
-       ========================================= */
+  
     .progress-track {
         width: 100%;
         height: 8px;
@@ -413,7 +399,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
         border-radius: 10px;
         margin-bottom: 30px;
         overflow: hidden;
-        /* لتحديد الاتجاه بناءً على اللغة */
+
         direction: inherit; 
     }
 
@@ -427,12 +413,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
         width: <?= $progress ?>%;
         border-radius: 10px;
         transition: width 0.5s ease;
-        /* في العربية سيبدأ من اليمين، وفي الإنجليزية سيبدأ من اليسار تلقائياً */
+       
     }
 
-    /* =========================================
-       6. النصوص والأسئلة
-       ========================================= */
+
     .mission-text {
         color: var(--gold-light);
         font-size: 20px;
@@ -445,7 +429,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
     }
 
     body.light-mode .mission-text {
-        color: #b45309; /* ذهبي محروق */
+        color: #b45309;
         border-color: rgba(146, 118, 90, 0.15);
     }
 
@@ -457,9 +441,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
         margin-bottom: 30px;
     }
 
-    /* =========================================
-       7. قائمة الخيارات
-       ========================================= */
+   
     .options-list {
         display: flex;
         flex-direction: column;
@@ -483,7 +465,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
         border-color: var(--gold-light);
     }
 
-    /* تحسين الهوفر في اللايت مود */
     body.light-mode .option-label:hover {
         border-color: #d97706;
         box-shadow: 0 5px 15px rgba(198, 147, 32, 0.1);
@@ -493,7 +474,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
         display: none;
     }
 
-    /* حالة الاختيار (Checked) */
+    
     .option-label:has(input:checked) {
         background: rgba(242, 208, 107, 0.1);
         border-color: var(--gold-light);
@@ -505,7 +486,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
         border-color: #d97706;
     }
 
-    /* دائرة الحرف (أ، ب، ج) */
+    
     .opt-key {
         width: 30px;
         height: 30px;
@@ -519,12 +500,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
         color: var(--text-muted);
         transition: 0.2s;
         
-        /* المسافات الافتراضية للعربي */
+        
         margin-left: 15px;
         margin-right: 0;
     }
 
-    /* عكس المسافات للإنجليزي */
+    
     html[dir="ltr"] .opt-key {
         margin-left: 0;
         margin-right: 15px;
@@ -551,9 +532,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
         color: var(--text-main);
     }
 
-    /* =========================================
-       8. الأزرار السفلية
-       ========================================= */
+    
     .actions {
         margin-top: 40px;
         display: flex;
@@ -637,16 +616,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
         animation: fadeIn 0.5s ease;
     }
     
-    /* تصحيح مربع البوت في اللايت مود */
+    
     body.light-mode .bot-response-box {
         background: #f3e8ff;
         border-color: #d8b4fe;
         color: #6b21a8;
     }
 
-    /* =========================================
-       9. شاشة الانتهاء (Completion)
-       ========================================= */
+    
     .completion-box {
         text-align: center;
         padding: 40px 0;
@@ -852,3 +829,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$is_completed && !isset($_POST['ac
 </body>
 
 </html>
+
