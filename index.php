@@ -31,19 +31,19 @@ $top_users = $conn->query($top_users_query);
     <link
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Outfit:wght@300;400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="main_page.css">
+    <link rel="stylesheet" href="css/main_page.css">
+    <link rel="icon" type="image/png" href="favicon.png" />
+    
 </head>
 
 <body>
 
     <nav class="navbar">
         <a href="index.php" class="logo">
-            <i class='bx bxl-flutter'></i>
+            <img src="Favicon.png" alt="Logo" style="height:40px; margin-right:8px; ">
             <span id="nav-logo">منصة تراث</span>
         </a>
         <div class="nav-actions">
-            <button class="icon-btn" onclick="toggleLanguage()" id="lang-btn">EN</button>
-            <button class="icon-btn" onclick="toggleTheme()"><i class='bx bx-sun' id="theme-icon"></i></button>
             <?php if (isset($_SESSION['user_id'])): ?>
                 <a href="user_page.php" class="btn-gold" id="nav-dash">لوحة التحكم</a>
                 <a href="logout.php" class="icon-btn" style="color:#ef4444; border-color:rgba(239,68,68,0.3);"><i
@@ -51,6 +51,11 @@ $top_users = $conn->query($top_users_query);
             <?php else: ?>
                 <a href="login.php" class="btn-gold" id="nav-login">تسجيل الدخول</a>
             <?php endif; ?>
+            <a href="about.php" class="icon-btn">
+                <i class='bx bx-info-circle'></i>
+            </a>
+            <button class="icon-btn" onclick="toggleLanguage()" id="lang-btn">EN</button>
+            <button class="icon-btn" onclick="toggleTheme()"><i class='bx bx-sun' id="theme-icon"></i></button>
         </div>
     </nav>
 
@@ -147,7 +152,7 @@ $top_users = $conn->query($top_users_query);
     <section class="section" style="background: var(--bg-secondary);">
         <div class="sec-header">
             <h2 id="work-title">كيف <span>تعمل المنصة؟</span></h2>
-            <p id="work-desc">خطوات بسيطة تفصلك عن الإتقان.</p>
+            <p id="work-desc">خطوات بسيطة تفصلك عن التعلم.</p>
         </div>
         <div class="steps-container">
             <div class="step-item">
@@ -169,10 +174,10 @@ $top_users = $conn->query($top_users_query);
     </section>
 
     <footer>
-        <div class="footer-logo">تراث <span>المملكة</span></div>
+        <div class="footer-logo">منصة <span>تراث</span></div>
         <p id="foot-desc">المنصة الأولى المتخصصة في أرشفة وتعليم التراث اللفظي السعودي.</p>
         <div class="copyright">
-            <p id="copy">&copy; 2024 جميع الحقوق محفوظة لمنصة تراث المملكة.</p>
+            <p id="copy">&copy; 2025 جميع الحقوق محفوظة لمنصة تراث المملكة.</p>
         </div>
     </footer>
 
@@ -192,12 +197,12 @@ $top_users = $conn->query($top_users_query);
                 c1t: "تعليم بالترفيه", c1d: "نستخدم أساليب التلعيب لتحويل التعلم إلى متعة.",
                 c2t: "تغطية شاملة", c2d: "محتوى يغطي كافة مناطق المملكة.",
                 c3t: "تحليل ذكي", c3d: "خوارزميات تتابع تقدمك وتقترح تحديات.",
-                workTitle: "كيف <span>تعمل المنصة؟</span>", workDesc: "خطوات بسيطة تفصلك عن الإتقان.",
+                workTitle: "كيف <span>تعمل المنصة؟</span>", workDesc: "خطوات بسيطة تفصلك عن التعلم.",
                 s1t: "سجل حسابك", s1d: "أنشئ حساباً في ثوانٍ.",
                 s2t: "اختر المنطقة", s2d: "حدد اللهجة التي تريد تعلمها.",
                 s3t: "اجمع النقاط", s3d: "أجب وتصدر القائمة.",
-                footDesc: "المنصة الأولى المتخصصة في التراث اللفظي السعودي.",
-                copy: "&copy; 2024 جميع الحقوق محفوظة لمنصة تراث المملكة."
+                footDesc: "المنصة الأقضل في تعلم التراث اللفظي السعودي.",
+                copy: "&copy; 2025 جميع الحقوق محفوظة لمنصة تراث."
             },
             en: {
                 pageTitle: "Torath Platform | Home",
@@ -216,8 +221,8 @@ $top_users = $conn->query($top_users_query);
                 s1t: "Register", s1d: "Create an account in seconds.",
                 s2t: "Choose Region", s2d: "Pick the dialect you want to learn.",
                 s3t: "Earn Points", s3d: "Answer correctly and rank up.",
-                footDesc: "The #1 platform for Saudi verbal heritage.",
-                copy: "&copy; 2024 All rights reserved to Torath Platform."
+                footDesc: "The best platform for learning Saudi cultural heritage.",
+                copy: "&copy; 2025 All rights reserved to Torath Platform."
             }
         };
 
