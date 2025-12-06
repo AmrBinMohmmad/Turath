@@ -150,7 +150,7 @@ session_start(); ?>
 
     const txt = {
       ar: {
-        navLogo: "منصة تراث", navDash: "لوحة التحكم", navLogin: "تسجيل الدخول",
+        navLogo: "منصة تراث", abTitle: "قصة <span>شغف</span> وتراث",
         abDesc: "في عصر التكنولوجيا، لاحظنا فجوة بين الأجيال ولغتهم الأم. منصة تراث هي الجسر.",
         methTitle: "منهجية <span>عملنا</span>", methP1: "نحن لا نجمع الكلمات عشوائياً:",
         m1: "جمع البيانات من المصادر الموثوقة.", m2: "مراجعة لغوية دقيقة.", m3: "تصنيف جغرافي دقيق.",
@@ -160,7 +160,7 @@ session_start(); ?>
         copy: "&copy; 2025 جميع الحقوق محفوظة لمنصة تراث"
       },
       en: {
-        navLogo: "Torath Platform", navDash: "Dashboard", navLogin: "Sign In",
+        navLogo: "Torath Platform", abTitle: "A Story of <span>Passion</span>",
         abDesc: "In the tech era, we noticed a gap between generations and their heritage. Torath is the bridge.",
         methTitle: "Our <span>Methodology</span>", methP1: "We verify every piece of info:",
         m1: "Data collection from trusted sources.", m2: "Linguistic review.", m3: "Accurate geographical classification.",
