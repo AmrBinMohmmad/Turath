@@ -95,7 +95,7 @@ $details = $conn->query($sql_details);
         <div class="header">
             <div style="display: flex; align-items: center;">
                 <i class='bx bx-menu menu-toggle' id="menuBtn"></i>
-                <h1 style="margin:0; font-size: 24px;">تحليل الأداء 📈</h1>
+                <h1 style="margin:0; font-size: 24px;">تحليل الأداء</h1>
             </div>
             <a href="admin_card_users.php?card_id=<?= $card_id ?>" class="back-link">
                 <i class='bx bx-left-arrow-alt'></i> عودة للقائمة
@@ -223,3 +223,4 @@ $details = $conn->query($sql_details);
 </html>
 
 </html>
+
