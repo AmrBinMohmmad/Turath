@@ -75,7 +75,7 @@ $history = $conn->query($sql_history);
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Outfit:wght@300;400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/user_page.css">
-   <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="icon" type="image/png" href="Favicon.png" />
     
 </head>
 
