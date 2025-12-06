@@ -143,7 +143,7 @@
 
         .auth-header i {
             font-size: 50px;
-            color: var(--gold-light);
+            color: var(--saudi-green);
             margin-bottom: 10px;
         }
 
@@ -272,4 +272,5 @@
             .auth-card {
                 padding: 30px 20px;
             }
+
         }
