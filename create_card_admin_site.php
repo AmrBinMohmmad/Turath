@@ -100,6 +100,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Outfit:wght@300;400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="css/create_card_admin_site.css">
+    <link rel="icon" type="image/png" href="Favicon.png" />
+
 </head>
 
 <body>
@@ -149,3 +151,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </html>
 
 </html>
+
