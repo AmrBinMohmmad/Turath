@@ -20,7 +20,7 @@ if (session_status() === PHP_SESSION_NONE) {
 function checkAdmin() {
     // 1. إذا لم يسجل الدخول أصلاً -> يذهب لصفحة الدخول
     if (!isset($_SESSION['user_id']) || !isset($_SESSION['role'])) {
-        header("Location: ../pages/login.php");
+        header("Location: ../login.php");
         exit();
     }
 
@@ -38,7 +38,7 @@ function checkAdmin() {
 function checkUser() {
     // 1. إذا لم يسجل الدخول -> يذهب لصفحة الدخول
     if (!isset($_SESSION['user_id']) || !isset($_SESSION['role'])) {
-        header("Location: ../pages/login.php");
+        header("Location: ../login.php");
         exit();
     }
 
@@ -48,4 +48,5 @@ function checkUser() {
         exit();
     }
 }
+
 ?>
