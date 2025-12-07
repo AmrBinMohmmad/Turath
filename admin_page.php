@@ -63,19 +63,9 @@ $recent_users = $conn->query("SELECT id, username, email, xp, level FROM if0_404
                 <div class="stat-label">إجمالي الإجابات</div>
                 <div class="stat-value"><?= number_format($answers_count) ?></div>
             </div>
-            <div class="card stat-card" style="border-right: 4px solid var(--accent-red);">
-                <i class='bx bxs-server stat-icon' style="color: var(--accent-red);"></i>
-                <div class="stat-label">حالة السيرفر</div>
-                <div class="stat-value" style="font-size: 24px; color: var(--accent-green);">مستقر 100%</div>
-            </div>
         </div>
 
-        <div class="dashboard-grid" style="grid-template-columns: 2fr 1fr;">
-            <div class="card" style="min-height: 350px;">
-                <h3 style="margin-bottom: 20px;">نشاط المنصة (Weekly Activity)</h3>
-                <div id="adminChart"></div>
-            </div>
-            <div class="card">
+        <div class="card">
                 <h3 style="margin-bottom: 20px;">إجراءات سريعة</h3>
                 <div style="display: flex; flex-direction: column; gap: 15px;">
                     <a href="create_card_admin_site.php" class="action-btn" style="flex-direction: row; justify-content: flex-start; padding: 15px;">
@@ -87,7 +77,8 @@ $recent_users = $conn->query("SELECT id, username, email, xp, level FROM if0_404
                     
                 </div>
             </div>
-        </div>
+
+        <br>
 
         <div class="card">
             <h3 style="margin-bottom: 15px;">آخر الأعضاء المنضمين</h3>
