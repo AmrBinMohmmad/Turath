@@ -15,7 +15,16 @@ require_once 'db.php'; // استخدام ملف الاتصال الموحد
 
 $sql = "
     SELECT c.*, 
-    (SELECT COUNT(DISTINCT user_id) FROM if0_40458841_projects.annotations a WHERE a.project_id = c.id) as student_count
+    (
+        SELECT COUNT(DISTINCT a.user_id) 
+        FROM if0_40458841_projects.annotations a 
+        WHERE a.project_id = c.id 
+        AND (
+            SELECT COUNT(*) 
+            FROM if0_40458841_projects.annotations a2 
+            WHERE a2.project_id = c.id AND a2.user_id = a.user_id
+        ) >= c.number_of_question
+    ) as student_count
     FROM if0_40458841_projects.cards c
     ORDER BY c.id DESC
 ";
@@ -100,5 +109,6 @@ $cards = $conn->query($sql);
 </html>
 
 </html>
+
 
 
