@@ -59,7 +59,7 @@ $isAdminPage = (strpos($current_page, 'admin') === 0 || strpos($current_page, 'c
     </nav>
 
     <div style="margin-top: auto;">
-        <a href="../auth/logout.php" class="nav-item" style="color: #ef4444;">
+        <a href="../../auth/logout.php" class="nav-item" style="color: #ef4444;">
             <i class='bx bx-log-out'></i> تسجيل خروج
         </a>
     </div>
@@ -91,4 +91,5 @@ $isAdminPage = (strpos($current_page, 'admin') === 0 || strpos($current_page, 'c
     });
 
 </script>
+
 
