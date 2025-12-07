@@ -70,7 +70,7 @@ $recent_users = $conn->query("SELECT id, username, email, xp, level FROM if0_404
                 <h3 style="margin-bottom: 20px;">إجراءات سريعة</h3>
                 <div style="display: flex; flex-direction: column; gap: 15px;">
                     <a href="create_card_admin_site.php" class="action-btn" style="flex-direction: row; justify-content: flex-start; padding: 15px;">
-                        <i class='bx bxs-plus-circle'></i> <span>إضافة مشروع جديد</span>
+                        <i class='bx bxs-plus-circle'></i> <span>إضافة كارد جديد</span>
                     </a>
                     <a href="admin_project_answers.php" class="action-btn" style="flex-direction: row; justify-content: flex-start; padding: 15px;">
                         <i class='bx bxs-analyse'></i> <span>مراجعة التقارير</span>
