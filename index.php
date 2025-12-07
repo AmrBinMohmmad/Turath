@@ -61,7 +61,7 @@ $top_users = $conn->query($top_users_query);
 
     <header class="hero">
         <video autoplay muted loop playsinline class="hero-video">
-            <source src="Saudi.mp4" type="video/mp4">
+            <source src="src/assets/videos/Saudi.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
