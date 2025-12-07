@@ -1,5 +1,5 @@
  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
-        :root { --bg-dark: #0f172a; --card-dark: #1e293b; --text-main: #f1f5f9; --text-muted: #94a3b8; --accent-blue: #3b82f6; --accent-red: #ef4444; --accent-green: #10b981; --accent-orange: #f59e0b; --sidebar-width: 260px; }
+        :root { --bg-dark: #0f172a; --card-dark: #1e293b; --text-main: #f1f5f9; --text-muted: #94a3b8; --accent-blue: #3b82f6; --accent-red: #ef4444; --accent-green: #10b981; --accent-orange: #f59e0b; --sidebar-width: 260px; --sidebar-bg: #0f172a; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body { font-family: 'Outfit', sans-serif; background-color: var(--bg-dark); color: var(--text-main); min-height: 100vh; overflow-x: hidden; display: block; }
@@ -44,4 +44,5 @@
             .main-content { margin-right: 0; }
             .menu-toggle { display: flex; } /* إظهار الزر في الجوال */
             .table-container { grid-column: span 1; overflow-x: auto; }
+
         }
