@@ -12,10 +12,19 @@ checkAdmin();
 require_once 'db.php'; // استخدام ملف الاتصال الموحد
 
 // جلب الكاردات + عدد الطلاب الحاليين
+
 $sql = "
     SELECT c.*, 
-    (SELECT COUNT(DISTINCT user_id) FROM if0_40458841_projects.annotations a WHERE a.project_id = c.id) as student_count
-    FROM if0_40458841_projects.cards c
+    (
+        SELECT COUNT(*) FROM (
+            SELECT user_id 
+            FROM if0_40458841_projects.annotations 
+            WHERE project_id = c.id 
+            GROUP BY user_id 
+            HAVING COUNT(*) >= (SELECT COUNT(*) FROM if0_40458841_projects.cards_questions WHERE card_id = c.id)
+        ) as finishers
+    ) as student_count
+    FROM projects.cards c
     ORDER BY c.id DESC
 ";
 $cards = $conn->query($sql);
@@ -99,4 +108,5 @@ $cards = $conn->query($sql);
 </html>
 
 </html>
+
 
