@@ -46,7 +46,7 @@ $isAdminPage = (strpos($current_page, 'admin') === 0 || strpos($current_page, 'c
                 <i class='bx bx-import'></i> استيراد أسئلة
             </a>
         <?php else: ?>
-            <a href="user_page.php" class="nav-item <?= $current_page == 'user_page.php' ? 'active' : '' ?>">
+            <a href="user/user_page.php" class="nav-item <?= $current_page == 'user_page.php' ? 'active' : '' ?>">
                 <i class='bx bxs-dashboard'></i> لوحة التحكم
             </a>
             <a href="#" class="nav-item">
@@ -59,7 +59,7 @@ $isAdminPage = (strpos($current_page, 'admin') === 0 || strpos($current_page, 'c
     </nav>
 
     <div style="margin-top: auto;">
-        <a href="logout.php" class="nav-item" style="color: #ef4444;">
+        <a href="../authlogout.php" class="nav-item" style="color: #ef4444;">
             <i class='bx bx-log-out'></i> تسجيل خروج
         </a>
     </div>
@@ -89,4 +89,5 @@ $isAdminPage = (strpos($current_page, 'admin') === 0 || strpos($current_page, 'c
         const menuBtn = document.getElementById('menuBtn');
         if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
     });
+
 </script>
