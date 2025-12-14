@@ -249,6 +249,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit_import'])) {
                         required
                         onchange="document.getElementById('fileNameDisplay').innerText = this.files[0].name; document.getElementById('fileNameDisplay').style.color = '#34d399';">
                 </div>
+                <a href="path/to/yourfile.pdf" download>
+                تحميل عينة من الاسئلة
+                </a>
                 <button type="submit" name="submit_import" class="btn-submit">رفع البيانات</button>
             </form>
         </div>
@@ -283,4 +286,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit_import'])) {
 
 
 </html>
+
 
