@@ -249,11 +249,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit_import'])) {
                         required
                         onchange="document.getElementById('fileNameDisplay').innerText = this.files[0].name; document.getElementById('fileNameDisplay').style.color = '#34d399';">
                 </div>
-                <a href="example.csv" class="btn-submit" download>
-                تحميل عينة من الاسئلة
-                </a>
+                
                 <button type="submit" name="submit_import" class="btn-submit">رفع البيانات</button>
             </form>
+            <br>
+            <a href="example.csv" class="btn-submit" download>
+                تحميل عينة من الاسئلة
+                </a>
         </div>
     </main>
     <script>
@@ -286,6 +288,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit_import'])) {
 
 
 </html>
+
 
 
 
