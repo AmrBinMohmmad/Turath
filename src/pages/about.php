@@ -1,11 +1,9 @@
 <?php 
 ini_set('display_errors', 1);
-
 ini_set('display_startup_errors', 1);
-
 error_reporting(E_ALL);
-
-session_start(); ?>
+session_start(); 
+?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -14,21 +12,40 @@ session_start(); ?>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>عن المنصة | تراث المملكة</title>
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Outfit:wght@300;400;700&display=swap"
-      rel="stylesheet">
-    <link rel="stylesheet" href="../css/about_page.css">
-    <link rel="icon" type="image/png" href="../assets/images/Favicon.png" />
-    
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;800&family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/about_page.css">
+  <link rel="icon" type="image/png" href="../assets/images/Favicon.png" />
+  
+  <style>
+    /* تنسيق أيقونة لنكدن */
+    .linkedin-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 26px; /* حجم الأيقونة */
+      color: #0077b5; /* لون لنكدن الرسمي */
+      transition: all 0.3s ease;
+    }
+    .linkedin-link:hover {
+      color: #004182; /* لون أغمق عند التمرير */
+      transform: translateY(-3px); /* حركة خفيفة للأعلى */
+    }
+    /* تحسين شكل بطاقة العضو لاستيعاب الأيقونة */
+    .team-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 20px;
+    }
+  </style>
 </head>
 
 <body>
 
-    <nav class="navbar">
-        <a href="../../index.php" class="logo">
-            <img src="../assets/images/Favicon.png" alt="Logo" style="height:40px; margin-right:8px; ">
-            <span id="nav-logo">منصة تراث</span>
-        </a>
+  <nav class="navbar">
+    <a href="../../index.php" class="logo">
+      <img src="../assets/images/Favicon.png" alt="Logo" style="height:40px; margin-right:8px; ">
+      <span id="nav-logo">منصة تراث</span>
+    </a>
     <div class="nav-actions">
       <?php if (isset($_SESSION['user_id'])): ?>
         <a href="user/user_page.php" class="btn-gold" id="nav-dash">لوحة التحكم</a>
@@ -40,14 +57,12 @@ session_start(); ?>
       <?php endif; ?>
       <button class="icon-btn" onclick="toggleLanguage()" id="lang-btn">EN</button>
       <button class="icon-btn" onclick="toggleTheme()"><i class='bx bx-sun' id="theme-icon"></i></button>
-      </button>
     </div>
   </nav>
 
   <section class="about-header">
     <h1 id="ab-title">قصة <span>شغف</span> وتراث</h1>
-    <p id="ab-desc">في عصر التكنولوجيا المتسارعة، لاحظنا فجوة تتسع بين الأجيال الجديدة ولغتهم الأم، وتحديداً اللهجات
-      المحلية الغنية. من هنا ولدت فكرة "منصة تراث"، لتكون الجسر الرقمي الذي يربط الماضي بالحاضر.</p>
+    <p id="ab-desc">في عصر التكنولوجيا المتسارعة، لاحظنا فجوة تتسع بين الأجيال الجديدة ولغتهم الأم، وتحديداً اللهجات المحلية الغنية. من هنا ولدت فكرة "منصة تراث"، لتكون الجسر الرقمي الذي يربط الماضي بالحاضر.</p>
   </section>
 
   <section class="section">
@@ -56,12 +71,9 @@ session_start(); ?>
         <h2 id="meth-title">منهجية <span>عملنا</span></h2>
         <p id="meth-p1">نحن لا نجمع الكلمات عشوائياً. تمر كل معلومة في منصتنا بمراحل تدقيق صارمة:</p>
         <ul style="list-style:none; color:var(--text-muted);">
-          <li style="margin-bottom:10px;"><i class='bx bxs-check-circle' style="color:var(--saudi-green)"></i> <span
-              id="m1">جمع البيانات من المصادر الموثوقة</span></li>
-          <li style="margin-bottom:10px;"><i class='bx bxs-check-circle' style="color:var(--saudi-green)"></i> <span
-              id="m2">مراجعة لغوية للتأكد من أصل الكلمة ومعناها الدقيق.</span></li>
-          <li style="margin-bottom:10px;"><i class='bx bxs-check-circle' style="color:var(--saudi-green)"></i> <span
-              id="m3">تصنيفها جغرافياً لضمان نسبتها للمنطقة الصحيحة.</span></li>
+          <li style="margin-bottom:10px;"><i class='bx bxs-check-circle' style="color:var(--saudi-green)"></i> <span id="m1">جمع البيانات من المصادر الموثوقة</span></li>
+          <li style="margin-bottom:10px;"><i class='bx bxs-check-circle' style="color:var(--saudi-green)"></i> <span id="m2">مراجعة لغوية للتأكد من أصل الكلمة ومعناها الدقيق.</span></li>
+          <li style="margin-bottom:10px;"><i class='bx bxs-check-circle' style="color:var(--saudi-green)"></i> <span id="m3">تصنيفها جغرافياً لضمان نسبتها للمنطقة الصحيحة.</span></li>
         </ul>
       </div>
       <div class="text-box">
@@ -92,38 +104,63 @@ session_start(); ?>
       <h2 id="team-title">العقول خلف <span>المنصة</span></h2>
       <p id="team-desc">طلاب شغوفين يجمعون بين الخبرة التقنية والبحث الثقافي.</p>
     </div>
+    
     <div class="team-grid">
+      
       <div class="team-member">
         <div class="member-avatar">ع</div>
         <h3>عمرو تنكر</h3>
         <span style="color:var(--saudi-green); font-size:14px;" id="r1">Team leader/Frontend developer</span>
+        <a href="https://www.linkedin.com/in/عمرو-تنكر-73a8ba304" target="_blank" class="linkedin-link">
+          <i class='bx bxl-linkedin-square'></i>
+        </a>
       </div>
+
       <div class="team-member">
         <div class="member-avatar">ع</div>
         <h3>عمار الحربي</h3>
         <span style="color:var(--saudi-green); font-size:14px;" id="r2">Frontend developer</span>
+        <a href="https://www.linkedin.com/in/ammar-alharbi-13b1541a3" target="_blank" class="linkedin-link">
+          <i class='bx bxl-linkedin-square'></i>
+        </a>
       </div>
+
       <div class="team-member">
         <div class="member-avatar">م</div>
         <h3>محمد العامري</h3>
         <span style="color:var(--saudi-green); font-size:14px;" id="r3">Frontend developer</span>
+        <a href="https://www.linkedin.com/in/%D9%85%D8%AD%D9%85%D8%AF-%D8%A7%D9%84%D8%B9%D8%A7%D9%85%D8%B1%D9%8A-941041257?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="linkedin-link">
+          <i class='bx bxl-linkedin-square'></i>
+        </a>
       </div>
+
       <div class="team-member">
         <div class="member-avatar">ع</div>
         <h3>عبدالرزاق الغامدي</h3>
-        <span style="color:var(--saudi-green); font-size:14px;" id="r3">Backend developer/Site manager</span>
+        <span style="color:var(--saudi-green); font-size:14px;" id="r4">Backend developer/Site manager</span>
+        <a href="https://www.linkedin.com/in/abdalrazaq-alghamd-04663b308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="linkedin-link">
+          <i class='bx bxl-linkedin-square'></i>
+        </a>
       </div>
+
       <div class="team-member">
         <div class="member-avatar">و</div>
         <h3>وضاح شافعي</h3>
-        <span style="color:var(--saudi-green); font-size:14px;" id="r3">Backend developer</span>
+        <span style="color:var(--saudi-green); font-size:14px;" id="r5">Backend developer</span>
+        <a href="https://www.linkedin.com/in/waddah-shafei" target="_blank" class="linkedin-link">
+          <i class='bx bxl-linkedin-square'></i>
+        </a>
       </div>
 
       <div class="team-member">
         <div class="member-avatar">ب</div>
         <h3>براء الخثعمي</h3>
-        <span style="color:var(--saudi-green); font-size:14px;" id="r3">Backend developer</span>
+        <span style="color:var(--saudi-green); font-size:14px;" id="r6">Backend developer</span>
+        <a href="https://www.linkedin.com/in/albaraa-alkhathami-4126b7384?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="linkedin-link">
+          <i class='bx bxl-linkedin-square'></i>
+        </a>
       </div>
+
     </div>
   </section>
 
@@ -156,7 +193,12 @@ session_start(); ?>
         m1: "جمع البيانات من المصادر الموثوقة.", m2: "مراجعة لغوية دقيقة.", m3: "تصنيف جغرافي دقيق.",
         valTitle: "قيمنا <span>الراسخة</span>", v1t: "الدقة", v1d: "معلومات موثوقة.", v2t: "الابتكار", v2d: "تقنية تخدم الثقافة.", v3t: "الشمولية", v3d: "كل المناطق.",
         teamTitle: "العقول خلف <span>المنصة</span>", teamDesc: "طلاب شغوفين مهتمين بالثقافة السعودية والتقنية.",
-        r1: "Team leader/Frontend developer", r2: "Frontend developer", r3: "Frontend developer",
+        r1: "Team leader/Frontend developer", 
+        r2: "Frontend developer", 
+        r3: "Frontend developer",
+        r4: "Backend developer/Site manager",
+        r5: "Backend developer",
+        r6: "Backend developer",
         copy: "&copy; 2025 جميع الحقوق محفوظة لمنصة تراث"
       },
       en: {
@@ -166,7 +208,12 @@ session_start(); ?>
         m1: "Data collection from trusted sources.", m2: "Linguistic review.", m3: "Accurate geographical classification.",
         valTitle: "Our <span>Values</span>", v1t: "Accuracy", v1d: "Reliable info.", v2t: "Innovation", v2d: "Tech for culture.", v3t: "Inclusivity", v3d: "All regions.",
         teamTitle: "Minds Behind <span>It</span>", teamDesc: "Passionate Saudi team.",
-        r1: "Team leader/Frontend developer", r2: "Frontend developer", r3: "Frontend developer",
+        r1: "Team leader/Frontend developer", 
+        r2: "Frontend developer", 
+        r3: "Frontend developer",
+        r4: "Backend developer/Site manager",
+        r5: "Backend developer",
+        r6: "Backend developer",
         copy: "&copy; 2025 All rights reserved to Torath Platform"
       }
     };
@@ -190,7 +237,15 @@ session_start(); ?>
       document.getElementById('v2-t').innerText = t.v2t; document.getElementById('v2-d').innerText = t.v2d;
       document.getElementById('v3-t').innerText = t.v3t; document.getElementById('v3-d').innerText = t.v3d;
       document.getElementById('team-title').innerHTML = t.teamTitle; document.getElementById('team-desc').innerText = t.teamDesc;
-      document.getElementById('r1').innerText = t.r1; document.getElementById('r2').innerText = t.r2; document.getElementById('r3').innerText = t.r3;
+      
+      // تحديث أدوار الفريق
+      document.getElementById('r1').innerText = t.r1; 
+      document.getElementById('r2').innerText = t.r2; 
+      document.getElementById('r3').innerText = t.r3;
+      document.getElementById('r4').innerText = t.r4;
+      document.getElementById('r5').innerText = t.r5;
+      document.getElementById('r6').innerText = t.r6;
+      
       document.getElementById('copy').innerHTML = t.copy;
 
       localStorage.setItem('lang', newLang);
